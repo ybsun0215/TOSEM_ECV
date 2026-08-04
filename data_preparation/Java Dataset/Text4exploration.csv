@@ -1,0 +1,211 @@
+"`Arrays.asList(...)` will give you a `List` backed by an array, so it cannot change length."
+"*Implementation detail: It's a private nested class inside `java.util.Arrays`, named `ArrayList`, which is a different class from `java.util.ArrayList`, even though their simple names are the same.*"
+"Correction: For an existing list in some variable, then you get an unmodifiable view list by passing it in the `Collections.unmodifiableList()` constructor, but `List.of` will always give you an ""immutable"" or unmodifiable list that is not a view."
+"Only `List.copyOf` is structurally unmodifiable and *not* a view collection (like `unmodifiableList` or `List.of` is), so its structure cannot be changed."
+"The above results in a compiler error, because `List<B>` (which is what is returned by `Arrays.asList`) is not a subclass of `List<A>`, even though you can add Objects of type `B` to a `List<A>` object."
+Any calls to `Arrays.asList()` with zero arguments or only one argument could be replaced with either a call to `Collections.singletonList()` or `Collections.emptyList()` which will save some memory.
+"Note: the list returned by `Collections.singletonList()` is immutable, while the list returned `Arrays.asList()` allows calling the `set()` method."
+"Differences between TreeMap, HashMap, and LinkedHashMap in Java"
+"The reason being that if you're in an interruptible blocking call (like `Thread.sleep` or using java.nio Channel operations), you'll actually be able to break out of those right away."
+"Like I said, the main advantage to `Thread.interrupt()` is that you can immediately break out of interruptible calls, which you can't do with the flag approach."
+"To clarify, if this `while` condition is going to be the sole way to stop the thread, then any `catch` block needs to call `Thread.currentThread().interrupt();` in order to maintain the interrupted status for the `while` condition."
+Blocking library methods like `Thread.sleep` and `Object.wait` try to detect when a thread has been interrupted and return early.
+Brian Goetz in his book suggests using `Thread.currentThread().isInterrupted()` flag and `interrupt()` method for cancellation.
+thread will continue its work until it reaches `Thread.currentThread().isInterrupted()` check and exit from `run()`.
+"Edit: I'm now using `Arrays.asList` instead of `Collections.singleton`: singleton is limited to one entry, whereas the `asList` approach allows you to add other strings to filter out later: `Arrays.asList(""a"", ""b"", ""c"")`."
+"Make a `List` out of the array with `Arrays.asList()`, and call `remove()` on all the appropriate elements."
+Use System.arraycopy repeatedly to copy each group of items you wish to retain into your new Array.
+"solution: Iterate over your array and whenever you find an element to remove (let's call it element n), use System.arraycopy to copy the tail of the array over the ""deleted"" element (Source and Destination are same array)--it is smart enough to do the copy in the correct direction so the memory doesn't overwrite itself:"
+"The `IllegalAccessException` would be thrown if the field was not accessible (for example, if it is private and has not been made accessible via missing out the `f.setAccessible(true)` line."
+"Of course, now you have to find out the `java.lang.reflect.Field` for `sString` prior to setting the field value."
+Basically on an `ExecutorService` you call `shutdown()` and then `awaitTermination()`:
+"Note that `executorService.invokeAll` will wait for all threads to complete, but you will still need to call `executorService.shutdown` to clean up your thread pool."
+".get() on each Future one at a time, instead of infinite looping calling isDone() on (all or each)."
+"While you can use `executor.shutdown()` and `executor.awaitTermination()`, it is not the best practice as the time taken by different threads would be unpredictable."
+"The way you're doing it, there's no guarantee that `sock.close()` will be reached because you catch only `Exception` and not all `Throwable`s."
+Long.valueOf() should be preferred: it returns cached values of Long for some often-used values instead of constructing a new instance as the constructor does.
+"**Difference between Long.getLong(s), Long.valueOf(s), Long.parseLong(s) where ""s"" is a String Type**"
+"Using `str.subSequence(begin, end)` returns a CharSequence which is a read-only form of the string represented as a sequence of chars."
+"In Java 1.4, `CharSequence` was added, and somebody apparently realized that it would be useful to have the same functionality there, but which returned a `CharSequence` instead of `String` (for flexibility)."
+Difference between subSequence and subString methods in java String class
+"@Calum and @Pool - as noted below in Alex Miller's answer, using `Arrays.asList(array)` without passing it into a new `ArrayList` object will fix the size of the list."
+"To clarify, `Arrays.asList()` creates a `java.util.Arrays.ArrayList` (static nested class in `java.util.Arrays`), not a `java.util.ArrayList`."
+Use the `ImmutableList` class and its `of()` and `copyOf()` factory methods (elements can't be null):
+"Use the JDK's `Arrays` class and its `asList()` factory method, wrapped with a `Collections.unmodifiableList()`:"
+"Note that the returned type for `asList()` is a `List` using a concrete `ArrayList` implementation, but **it is NOT** `java.util.ArrayList`."
+Thus this list isn't truly immutable and a call to `asList()` should be wrapped with `Collections.unmodifiableList()`.
+"I don't think so, the 2 options are valid but the Arrays.stream is slightly 'better' since you can create it with fixed size, using the overload method with 'start', 'end' args."
+It creates a kind of ArrayList named Arrays.ArrayList where the Object[] data points directly to the array.
+I fail to see the fundamental difference between your loop at the end of the answer and the new ArrayList<T>(Arrays.asList(myArray)); part which you discourage to use.
+"`new ArrayList<T>(Arrays.asList(myArray));` does the same, it copies the `asList` to an `ArrayList`."
+"If you say `String.valueOf(i)`, Java converts the integer to a string and returns the result."
+"Both of the ways are correct, but using `String.valueOf(i)` or `Integer.toString(i)` is more efficient than `"""" + i`."
+As already pointed out `Integer.toString()` or `String.valueOf()` are the way to go.
+"`Integer.toString(i)` and `String.valueOf(i)` are basically identical in performance, with `Integer.toString(i)` being a tiny bit faster."
+"* well you miss an important piece, in that String.valueOf and Integer.toString always create a new String object, while """" + int uses String pool."
+"In `java.util.concurrent.FutureTask`, the mechanism of cancellation by timeout is acted as throwing `TimeoutException`."
+`io.Source.stdin` is defined (in `scala.io.Source` class) as `def stdin = fromInputStream(System.in)` so probably it's better to stick with the `io.Source.stdin`.
+"You can force it to materialize using `.toStream` or `.toList` on it, depends on the use case."
+"As noted briefly in other comments, `scala.Predef.readLine()` is deprecated since Scala 2.11.0, and you can replace it with `scala.io.StdIn.readLine()`."
+"The Queue interface extends java.util.Collection with additional insertion, extraction, and inspection operations like:"
+"Note, `IdentityHashMap` `entrySet` iterator currently has a peculiar implementation which returns the same `Map.Entry` instance for every item in the `entrySet`!"
+Using `entrySet` with EC `Map` implementations results in `Map.Entry` objects being generated dynamically.
+The `forEachKeyValue` method is able to avoid creating the `Map.Entry` objects because it can navigate the internal structure of the `Map` implementations directly.
+"The official way to do this is to call `map.entrySet()`, which returns a set of `Map.Entry`, each of which contains a key and a value (`entry.getKey()` and `entry.getValue()`)."
+"In an idiosyncratic implementation, it might make some difference whether you use `map.keySet()`, `map.entrySet()` or something else."
+In Java 1.8 (Java 8) this has become a lot easier by using the `forEach` method from Aggregate operations (Stream operations) that looks similar to iterators from the `Iterable` Interface.
+Date.before() and Date.after() seem to be a little awkward to use.
+Supplants the old troublesome classes including `java.util.Date/.Calendar` and `SimpleDateFormat`.
+"If getting `java.sql.Timestamp` objects through JDBC from a database, convert to java.time.Instant in a similar way."
+"(B) The troublesome old classes such as `java.util.Date` and `java.util.Calendar` are now legacy, supplanted by the java.time classes."
+"If is required to consider inclusive endDate, *testDate.before(endDate)* returns false when testDate and endDate are the same day, we can use ""apache commons lang"" package to verify this (org.apache.commons.lang.time.DateUtils)."
+"The `TreeMap.putAll` method (and the TreeMap constructor that takes a SortedMap) calls a method called `buildFromSorted` internally, which is described in the docs as: ""Linear time tree building algorithm from sorted data"", so that sounds like it does what you want."
+"Just give the `putAll` method something that implements Map, but where the map's entryset iterator (`Map.entrySet().iterator()`) returns your list of sorted values."
+I am trying to use a `java.util.Date` as input and then creating a query with it - so I need a `java.sql.Date`.
+* Use *java.time* classes instead of legacy `java.util.Date` & `java.sql.Date` with JDBC 4.2 or later.
+"If you are trying to work with date-only values (no time-of-day, no time zone), use the `LocalDate` class rather than `java.util.Date`."
+"If your JDBC driver complies with JDBC 4.2 spec, you should be able to pass a `LocalDate` via `setObject` on a `PreparedStatement` to store into a SQL DATE field."
+But note that `Instant` has a resolution up to nanoseconds while `java.util.Date` has only milliseconds resolution.
+"Converting `java.util.Date` to `java.sql.Date` will lose hours, minutes and seconds."
+* `valueOf` returns a new or cached instance of `java.lang.Integer`
+The `Integer` class also provides the `valueOf(String str)` method:
+"Google Guava has Ints.tryParse(String), which returns `null` if the string couldn't be parsed, for example:"
+"But the thing here is, the method `Integer.valueOf()` has the following implementation in `Integer` class:"
+"As you can see, the `Integer.valueOf()` internally calls `Integer.parseInt()` itself."
+You can use `Collections.list()` to convert an `Enumeration` to a `List` in one line:
+"If you need `Set` rather than `List`, you can use `EnumSet.allOf()`."
+I want to convert a `java.util.Date` object to a `String` in Java.
+Convert a **Date** to a **String** using `DateFormat#format` method:
+"These classes supplant the troublesome old date-time classes such as `java.util.Date`, `.Calendar`, & `java.text.SimpleDateFormat`."
+"In Java 8, a call like `Instant.now().atOffset(ZoneOffset.UTC).toString()` will run."
+"You can find out about this by reading the documentation of `List.add()`, which documents this to be an ""(optional operation)""."
+"Many of the List implementation support limited support to add/remove, and `Arrays.asList(membersArray)` is one of that."
+You need to insert the record in `java.util.ArrayList` or use the below approach to convert into `ArrayList`.
+"From the above Source you may observe that `java.util.Arrays.ArrayList` class doesn't `@Override add(index, element), set(index, element), remove(index)`."
+You will also get this exception if you attempt to `add` to a `List<T>` returned by `Collections.singletonList(T o)`:
+"List `membersList = Arrays.asList(membersArray);` returns immutable list, what you need to do is `new ArrayList<>(Arrays.asList(membersArray));` to make it mutable."
+The reason for the UnsupportedOperationException is because the Arrays.asList() method returns a fixed-size list backed by the original array.
+List.addAll throwing UnsupportedOperationException when trying to add another list
+just to provide more info related to FLUSH and Close method related to FileOutputStream:
+"In Servlet you can get this header's value by `request.getContentLength()` or `reqest.getHeaders(""Content-Length"")`."
+"To do that, you can do `exception.printStackTrace()` and look at the ""Caused By:"" section instead of the top half/normal section."
+Imagine I have a cascade of `java.lang.reflect.Proxy` instances augmenting a wrapped object.
+"The ""target exception"" that is provided at construction time and accessed via the getTargetException() method is now known as the cause, and may be accessed via the Throwable.getCause() method, as well as the aforementioned ""legacy method."""
+You can compare with the original exception Class using getCause() method like this:
+I had a `java.lang.reflect.InvocationTargetException` error from a statement calling a logger object in an external `class` inside a `try` / `catch` block in my `class`.
+I used `e.getCause().getCause()` then I found that it was because of wrong parameters I was passing.
+"You can use a `java.util.LinkedList` - it's doubly-linked and circular, so adding to one end and taking from the other are O(1)."
+"If you want to implement your own model you should consider inheritance, annotation interface `com.fasterxml.jackson.annotation.JsonTypeInfo` and annotation interface `com.fasterxml.jackson.annotation.JsonSubTypes`."
+"> equals(Object) method, then calling the hashCode method on each of"
+"The java.time API introduced with Java-8 (March 2014) supplants the error-prone and outdated `java.util` and their formatting API, `SimpleDateFormat`."
+"You can then use `Collections.sort(List)` or just switch from your `List` to a `SortedSet` implementation like `TreeSet` (if you don't need duplicates, a `Set` drops duplicates)"
+"Write a `java.util.Comparator` to define an **imposed ordering** and call `Collections.sort(List, Comparator)` or (losing duplicates again) go for a `new TreeSet(Comparator)`."
+You can call `Collections.sort()` providing a `Comparator` which compares the `getCountry()`.
+What's the difference between Thread start() and Runnable run()
+`Thread.start()` is required to actually create a new thread so that the runnable's `run` method is executed in parallel.
+"The difference is that `Thread.start()` starts a thread that calls the `run()` method, while `Runnable.run()` just calls the `run()` method on the current thread."
+"`Thread.start()` calls the `run()` method asynchronously, which changes the state of the new Thread to Runnable."
+"Most of these answers miss the big picture, which is that, as far as the Java language is concerned, there is no more difference between `t.start()` and `r.run()` than there is between any other two methods."
+"The biggest difference is that most of the code for `t.start()` is *native* code while, in most cases, the code for `r.run()` is going to be pure Java."
+`Thread.start()` code registers the Thread with the scheduler and the scheduler calls the `run()` method.
+Need some clarification on Java threads: start() and run()
+See the javadoc of List or Set and check the size before using the above methods by invoking `isEmpty()`
+"It better shows your intent and is possibly more efficient (e.g., LinkedList size() is O(n))."
+Always use `List.iterator().next()` or `Set.iterator().next()` to avoid O(N) for Linked data structures.
+"Verify by using `Set.isEmpty()` or `List.isEmpty()` for the same reason, as both cases will always be O(1) instead of a potential O(N) if an implementation of Linked data structure is passed like `LinkedList` or `LinkedHashSet`."
+"This may have meaning for LinkedHashSet and TreeSet, but not for HashSet.)"
+Use a HashMap unless you have some need for ordering. HashMap is faster.
+"ArrayDeque is better than LinkedList, because ArrayDeque doesn't have the overhead of node allocations that LinkedList does�?
+It's more efficient than using StringWriter
+Have Country implement the java.util.Comparable interface to define a natural ordering on your Country objects"
+"In this case I would use DataInputStream and DataOutputStream, and the readUTF()/writeUTF() methods for the messages and filenames "
+Basically you need to implement the UIKeyboardInteractive interface (together with the UserInfo interface) and associate the implementation with the session using the Session.setUserInfo
+"Also, JSON Object with type latlng contains list of objects which are represented in JSON in form of array."
+"Use a Swing Timer and a DocumentListener, each time the Document is updated, reset the Timer "
+use a Matcher object and use Matcher.find() to find matches within the input string:
+Basically on an ExecutorService you call shutdown() and then awaitTermination():
+"Once you have the count, then you compute the right values for skip and limit based on the count and the percentages you want "
+"In Java, to send data via the socket, you get an OutputStream (1) from it, and write to the OutputStream (you output some data). n your case, the server has another socket (the other end of the connection) and another pair of streams. It uses its InputStream (2) to read from the network, and its OutputStream (3) to write the same data back across the network to your client, which reads it again via its InputStream (4) completing the round trip. "
+"You should avoid overriding paint and instead use paintComponent You should avoid extending from JFrame and instead use something like JPanel, which actually has a paintComponent method. "
+Instant instead of java.util.Date LocalDate instead of java.sql.Date
+"So, if you want to split on e.g. period/dot . which means ""any character"" in regex, use either backslash \ to escape the individual special character like so split(""\\."") use character class [] to represent literal character(s) like so split(""[.]""), or use Pattern#quote() to escape the entire string like so split(Pattern.quote(""."")). To test beforehand if the string contains certain character(s), just use String#contains()."
+To manipulate data you actually need executeUpdate() rather than executeQuery().
+"The most straight-forward looking approach will just use readLine() which is part of Predef. this is so verbose, you'd rather use java.util.Scanner instead.  "
+"isConnectedOrConnecting() (used in most answers) checks for any network connection To know whether any of those networks have internet access, use one of the following "
+"Indeed rather use ExecutorService instead of Timer, here's an SSCCE:  "
+using Arrays.asList instead of Collections.singleton
+"An alternative is to write your own class which implements the necessary Queue interface. It is not needed except in those rare cases where you wish to do something special while providing the rest of your program with a Queue An even less used alternative is to construct an anonymous class that implements Queue. You probably don't want to do this, but it's listed as an option for the sake of covering all the bases. "
+"If you look at the documentation of Collectors#toList(), it states that - ""There are no guarantees on the type, mutability, serializability, or thread-safety of the List returned"". If you want a particular implementation to be returned, you can use Collectors#toCollection(Supplier) instead.  "
+"you'd only need to change HashSet to ArrayList, PriorityQueue, or any other class that implements Collection. it's generally better to use Collection objects (in particular List objects) rather than arrays. "
+"You can use ListIterator instead of Iterator. ListIterator has previous() and hasPrevious() methods. Not directly, as others pointed out, but if you e.g. need to access one previous element you could easily save that in a separate variable "
+"If you look at the Date(long) constructor, you'll see that it expects the value to be the number of milliseconds since the epoch, UTC: Regarding your desire to force GMT instead of your local time zone: "
+"readLine() won't return until it's read a carriage return or a line feed, which is what you normally get when you read from a terminal or a text file."
+Instead of using the ChromeDriver implementation use the WebDriver interface
+"You can use JOptionPane's setLocation(...) method. OR Instead of using JOptionPane you can extends a JDialog, and then specify it's location on the screen."
+"use this overload rather than the List<T>.toArray() overload, you can choose the actual type of the array. "
+use a javax.swing.Timer to perform the animation rather than Thread sleeps
+"In general, it's not at all safe to compare the hashCode instead of using equals  "
+" it will initialize an immutable List rather than an ArrayList, and furthermore, it's not available yet, if it ever will be "
+"If you are working with a source other than a file, you can use the lines() method in BufferedReader instead."
+"Also, if the right-hand side of the for (:) idiom is an array rather than an Iterable object, the internal code uses an index counter and checks against array.length instead. See the Java Language Specification.  "
+To overwrite file foo.log with FileOutputStream or with FileWriter :
+"you can use Comparable, or custom Comparator to do this. "
+Thread.sleep or using java.nio Channel operations using standard InputStream/OutputStream which are not interruptable
+"If you a resource is needed for you application and is packaged in the jar, it should be read from an URL, either via getClass().getResource() which returns an actual URL to a resource, or getClass().getResourceAsStream() which return the resource as a stream in the form of InputStream, obtained from the URL. You can also getClassLoader(), but here are the main differences "
+"The subclasses DecimalFormat and ChoiceFormat have a method toPattern(), so you must check using instanceof and call toPattern() "
+"In Servlet you can get this header's value by request.getContentLength() or reqest.getHeaders(""Content-Length"") "
+"If at any point you need bigger numbers, you can try java.math.BigInteger (if integer), or java.math.BigDecimal (if decimal) "
+Use scheduler.pauseJob() or scheduler.pauseTrigger(). Use the pauseJob or pauseJobGroup methods of JobStore
+A nice way to do this is using Apache commons IOUtils to copy the InputStream into a StringWriter or use ByteArrayOutputStream if you don't want to mix your Streams and Writers
+Normal ways would be Integer.toString(i) or String.valueOf(i).
+"use the getters of java.time.LocalDateTime Or, when you're not on Java 8 yet, make use of java.util.Calendar. "
+You might want to check for next element before getting it in Scanner with scanInput.hasNextInt(). If you use the above Scanner coord = new Scanner(System.in); and then call the function with Scanner scanInput = new Scanner(System.in);
+The TreeMap.putAll method (and the TreeMap constructor that takes a SortedMap) calls a method called buildFromSorted internally
+"r1 and r2 are just two different objects of classes that implement the Runnable interface and thus implement the run() method. When you call r1.run() you are executing it in the current thread. t1 and t2 are objects of the class Thread. When you call t1.start(), it starts a new thread and calls the run() method of r1 internally to execute it within that new thread."
+The cast ensures that the internal class used by Java to implement the lambda will implements Serializable
+"If you properly override the equals method, you can then just use the remove method "
+It seems there is space at end. Do a trim() before passing to Integer.parseInt(str);
+wait() suspend the current thread until another thread calls notify() to wake up.
+"Typically anything that needs to be done after a SwingWorker completes its background work is done by overriding the done() method in it This method is called on the Swing event thread after completion, allowing you to update the GUI or print something out or whatever"
+Put a Scanner.nextLine call after each Scanner.nextInt to consume rest of that line including newline
+"the difference is in the contract, that when element can not be added to collection the add method throws an exception and offer doesn't."
+"In TreeMap - Elements are sorted
+In HashMap - Elements are not sorted       "
+"sleep() causes the thread to definitely stop executing for a given amount of time; if no other thread or process needs to be run, the CPU will be idle (and probably enter a power saving mode).
+yield() basically means that the thread is not doing anything particularly important and if any other threads or processes need to be run, they should. Otherwise, the current thread will continue"
+"Servlets can render complete web pages, whereas portlets renders html fragments. These fragments are aggregated by the portal into a complete web page. The content type of JSR 168 portlets can be only cHTML, XHTML, WML. It does not support other content types. Portlets are not allowed to generate HTML code that contains tags such as body, frame, frameset, head, html, or title A Portlet unlike a servlet doesn’t have URL attached to it so it cannot be accessed directly. Access is only through the portal page which holds the portlet. Portlets can be provided with controls to manipulate its window states or portlet modes. Multiple instances of a single portlet can be placed onto the same page. Portlets support persistent configuration and customization, profile information. Portlets can have two types of request viz. render request and action request."
+"The difference is that using new Long() you will always create a new object, while using Long.valueOf(), may return you the cached value of long if the value is between [-128 to 127] If you see the source code for Long.valueOf(String), it internally invokes Long.valueOf(long), whose source code I have posted below: -      "
+Comparable and Comparator are generic interfaces that allow to compare instances of the type defined in the generic (subclasses included). The main difference between them is that Comparable is directly implemented in the class which you want to compare objects.
+"One difference is that TreeMaps do not support null keys, but HashMaps do. With a TreeMap, you would get an exception at runtime if beanRecord.getEmail() returned null."
+"Difference between ForkJoinPool and ExecutorService
+Eugene in his comment mentioned also one more important thing. ForkJoinPool uses work-stealing approach.while ExecutorService created with .newFixedThreadPool() uses divide and conquer approach."
+"PrintWriter has an optional constructor you may use to enable auto-flushing when specific methods are called. No such option exists in FileWriter. When writing to files, FileWriter has an optional constructor which allows it to append to the existing file when the ""write()"" method is called.    "
+"HashSet gives you an O(1) contains() method but doesn't preserve order. ArrayList contains() is O(n) but you can control the order of the entries. Array if you need to insert anything in between, worst case can be O(n), since you will have to move the data down and make room for the insertion. In Set, you can directly use SortedSet which too has O(n) too but with flexible operations.     "
+"If collection is empty, popLast() returns null, but removeLast() returns a discardable result or crashes�?"
+"In Java, to send data via the socket, you get an OutputStream (1) from it, and write to the OutputStream (you output some data). n your case, the server has another socket (the other end of the connection) and another pair of streams. It uses its InputStream (2) to read from the network, and its OutputStream (3) to write the same data back across the network to your client, which reads it again via its InputStream (4) completing the round trip.      "
+"Not really an error but a suggestion from @MadProgrammer in this other answer of mine to use the Shape API instead of pure .drawOval as you did while drawing the line, change drawOval to draw(new Ellipse2D.Double(...) You're overriding paint(Graphics g) method instead of paintComponent(Graphics g) this could cause some issues while painting      "
+"The most straight-forward looking approach will just use readLine() which is part of Predef. this is so verbose, you'd rather use java.util.Scanner instead."
+"Indeed rather use ExecutorService instead of Timer, here's an SSCCE:"
+"An alternative is to write your own class which implements the necessary Queue interface. It is not needed except in those rare cases where you wish to do something special while providing the rest of your program with a Queue An even less used alternative is to construct an anonymous class that implements Queue. You probably don't want to do this, but it's listed as an option for the sake of covering all the bases.      "
+"You can use ListIterator instead of Iterator. ListIterator has previous() and hasPrevious() methods. Not directly, as others pointed out, but if you e.g. need to access one previous element you could easily save that in a separate variable      "
+"use this overload rather than the List<T>.toArray() overload, you can choose the actual type of the array.        "
+use a javax.swing.Timer to perform the animation rather than Thread.sleep()
+"In general, it's not at all safe to compare the hashCode instead of using equals"
+"it will initialize an immutable List rather than an ArrayList, and furthermore, it's not available yet, if it ever will be"
+"you can use Comparable, or custom Comparator to do this."
+"If you a resource is needed for you application and is packaged in the jar, it should be read from an URL, either via getClass().getResource() which returns an actual URL to a resource, or getClass().getResourceAsStream() which return the resource as a stream in the form of InputStream, obtained from the URL. You can also getClassLoader(), but here are the main differences       "
+"In Servlet you can get this header's value by request.getContentLength() or reqest.getHeaders(""Content-Length"")       "
+convert java.util.Date to java.sql.Date
+Convert a Date to a String using DateFormat#format method:
+the following code converts List<Integer> to List<String>:
+use Collections.list() to convert an Enumeration to a List in one line:
+convert a java.util.Date object to a java.lang.String object representing the
+convert String to int use Integer.toString(i) or String.valueOf(i)
+Iterator is used with the ArrayList to facilitate element traversal.
+ArrayList relies on the implementation of the Iterator interface.
+ArrayList collaborates with Collections to perform collection operations such as sorting.
+The Iterable interface depends on the Iterator interface to provide a mechanism for iterating over a collection of objects.
+ArrayList collaborates with the ListIterator to enable modifications to the list during traversal.
+ArrayList relies on the framework of basic list operations provided by AbstractList.
+"so, you should use nextline() in your while rather than next()."
+as for your example: since hashcode() is executed exactly once it has less impact than equals().

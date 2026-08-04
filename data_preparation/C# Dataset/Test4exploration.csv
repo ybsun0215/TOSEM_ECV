@@ -1,0 +1,302 @@
+﻿"Similarly, after you've set your property AllowedColors to Red, Green and Blue using the binary bitwise OR | operator, AllowedColors looks like this:"
+"It should also be pointed out that Noda Time has a representation called ZonedDateTime for this, while the .Net base class library does not have anything similar."
+"The HashSet(Of T) class is based on the model of mathematical sets and provides high-performance set operations similar to accessing the keys of the Dictionary(Of TKey, TValue) or Hashtable collections"
+System.Collections.Generic.Dictionary implements the System.Collections.Generic.IDictionary interface (which is similar to Java's Map interface).
+The main difference between Task.WaitAll and Task.WhenAll is that the former will block (similar to using Wait on a single task) while the latter will not?
+TypeSwitch is designed to prevent redundant casting and give a syntax that is similar to a normal switch/case statement
+The WPF equivalent would be the System.Windows.MessageBox. It has a quite similar interface?
+"With .NET 4 and above, I'd use Stream.CopyTo, which is basically equivalent to the loop in my code - create the MemoryStream, call stream.CopyTo(ms) and then return ms.ToArray(). Job done."
+MSSQL's float type is equivalent to the 64-bit double type in .NET.
+"Note that as of .NET 6, there are TimeOnly and DateOnly types which are roughly equivalent to Noda Time's LocalTime and LocalDate types."
+"string is an alias in C# for System.String. So technically, there is no difference."
+having to declare the value at the time of a definition for a const VS readonly values can be computed dynamically but need to be assigned before the constructor exits
+"Finally, the difference between First() and Take(1) is that First() returns the element itself, while Take(1) returns a sequence?
+Convert.ToInt32() also does not throw ArgumentNullException when its argument is null the way Int32.Parse() does
+The main difference between Task.WaitAll and Task.WhenAll is that the former will block (similar to using Wait on a single task) while the latter will not and can be awaited"
+"However, the first method, Task.Factory.StartNew , gives you the opportunity to define a lot of useful things about the thread you want to create, while Task.Run doesn't provide this."
+"Look at the MSDN docs for each of them ( SortedList , SortedDictionary ) for details of the performance for different operations in different situtations"
+"Others have already covered the difference between Dispose and Finalize (btw the Finalize method is still called a destructor in the language specification), so I'll just add a little about the scenarios where the Finalize method comes in handy."
+bool is an alias for System.Boolean just as int is an alias for System.Int32 . See a full list of aliases here: Built-In Types Table (C# Reference) .
+"Note : The cast to (Suit[]) is not strictly necessary, but it does make the code 0.5 ns faster ."
+So is it faster to use List over IEnumerable ? Only if you want to prevent a query from being executed more than once
+Array of arrays (jagged arrays) are faster than multi-dimensional arrays and can be used more effectively
+"It is much faster than a regular List . Some basic benchmarks showed that HashSet is decently faster when dealing with primary types (int, double, bool, etc.). It is a lot faster when working with class objects"
+It also happens to be an order of magnitude faster than concatenating onto the .Text property
+"Prior to .NET Core 2.0, that is to say sometime mid-February 2017, you could use SkiaSharp for imaging (example) (you still can). Post .net-core 2.0, you'll notice that SixLabors ImageSharp is the way to go, since System.Drawing is not necessarely secure, and has a lot of potential or real memory leaks, which is why you shouldn't use GDI in web-applications; Note that SkiaSharp is a lot faster than ImageSharp, because it uses native-libraries (which can also be a drawback). Also, note that while GDI+ works on Linux & Mac, that doesn't mean it works on iOS/Android."
+Curious also that entity framework shall be faster for updates than Dapper - although both at record slowness
+"I suspect there are approaches which would actually be marginally faster than this, but even this will be vastly faster than your O(N * M) approach."
+"On the other hand, code in interpreted languages gets faster in later versions of the runtime (.NET CLR or Java VM), without you doing anything"
+"As Donald Knuth said, ""premature optimization is the root of all evil"". If you really know for sure that your application will mostly consist of very performance critical arithmetic, and that it will be the bottleneck, and it's certainly going to be faster in C++, and you're sure that C++ won't conflict with your other requirements, go for C++. In any other case, concentrate on first implementing your application correctly in whatever language suits you best, then find performance bottlenecks if it runs too slow, and then think about how to optimize the code"
+Now with one line you can make this many many times faster than reflection (by enabling HyperDescriptor for the object-type T ).
+"Hashtable lookup is not strictly O(1) and has noticeable constant costs, but if the number of case labels is large, it will be significantly faster than comparing to each string constant in an IF statement."
+"The compiler searches Outer before looking at those using directives outside the namespace, so it finds Outer.Math instead of System.Math . Unfortunately (or perhaps fortunately?), Outer.Math has no PI member, so File1 is now broken."
+"Note that C# has the concept of nullable datatypes for variables (like database tables can have nullable fields) - you can assign null to them to indicate there is no value stored in it, for example int? a = null; (which is a shortcut for Nullable<int> a = null; ) where the question mark indicates it is allowed to store null in variable a . You can check that either with if (a.HasValue) {...} or with if (a==null) {...} . Nullable variables, like a in this example, allow to access the value via a.Value explicitly, or just as normal via a . Note that accessing it via a.Value throws an InvalidOperationException instead of a NullReferenceException if a is null - you should do the check beforehand, i.e. if you have another non-nullable variable int b; then you should do assignments like if (a.HasValue) { b = a.Value; } or shorter if (a != null) { b = a; } ."
+"If you meant ""why do we use the Dictionary<TKey, TValue> class instead of the Hashtable class?"", then it's an easy answer: Dictionary<TKey, TValue> is a generic type, Hashtable is not"
+If you can use JSON.Net instead of JavaScriptSerializer than see answer on this question provided by Omer Bokhari : JSON.net covers this use case (via the attribute [JsonConverter(typeof(StringEnumConverter))] ) and many others not handled by the built in .net serializers
+"Unfortunately, this means having this part of your code written in MSIL instead of C#, with the only added benefit being that you're able to constrain this method by System.Enum .  It's also kind of a bummer, because it gets compiled into a separate assembly.  However, it doesn't mean you have to deploy it that way."
+The reason you may need AsyncContext.RunTask instead of Task.WaitAndUnwrapException is because of a rather subtle deadlock possibility that happens on WinForms/WPF/SL/ASP.NET:
+"So then, why DateTimeOffset instead of a UTC DateTime ? It's all about perspective"
+Use the generated password in the fromPassword constant instead of your standard Gmail password.
+"I have only seen a need for this return-null type of functionality with badly designed libraries which use error codes (e.g. return null = error, instead of using exceptions)."
+"Overwriting the Message property in the custom exception instead of overwriting ToString() has the benefit that the standard ASP.NET ""Yellow screen of death (YSOD)"" displays this message as well"
+By setting a breakpoint on the line throw newException; you can simply inspect the newException.Message property as a text instead of drilling into the validation collections which is a bit awkward and doesn't seem to work easily for everyone (see comments below).
+For me it was the excelApp.Worksheets object which I directly used without assigning it to a variable:
+"This has existed since .NET 2.0, so before LINQ. It's meant to be used with the Predicate delegate , but lambda expressions are backward compatible"
+"This is new in .NET 3.5 and uses Func(TSource, bool) as an argument, so this was intended to be used with lambda expressions and LINQ."
+"In C and C++, my experience is that typedef is usually used within .h files which are included widely - so a single typedef can be used over a whole project"
+This approach should be used with caution as Last may well have to iterate through the collection
+"$ is short-hand for String.Format and is used with string interpolations, which is a new feature of C# 6"
+Plus it has a DataSetHelper that lets you use DataSets and DataTables to easily work with Excel data.
+"Let me start by saying that registering a DbContext as transient could work, but typically you want to have a single instance of such a unit of work within a certain scope."
+we've built Encrypt/Decrypt methods that work with URL-friendly string). It also has the methods that work with byte arrays
+"Namespaces are pretty easy to work with in LINQ to XML, unlike any other XML API I've ever seen."
+"To work with settings in your ASP.NET application, it is recommended that you only instantiate a Configuration in your application Startup class."
+"For example, System.Data.DataTable/DataAdaper.Update is missing... (not anymore with .NET Core 2.0) Together with the System.Data.Common.IDB* interfaces. (not anymore with .NET Core 1.1) if there ever was one class that is often used, DataTable/DataAdapter would be it... Also, the Linux-installer (.deb) fails, at least on my machine, and I'm sure I'm not the only one that has that problem"
+"Since IGrouping<TKey, TElement> implements IEnumerable<TElement> , you can use SelectMany to put all the IEnumerables back into one IEnumerable all together:"
+"I'd expect Substring to probably be the fastest here, simply because Substring always ends up creating a string from a single chunk of the original input, whereas Remove has to at least potentially glue together a start chunk and an end chunk."
+"As mentioned in other posts, if the string comes from another environment (OS) then you'd need to replace that particular environments implementation of new line control characters ."
+"You can also Regex the illegal characters and then replace, but this gets far more complex, as you will have to have some form of state machine (switch ... case, for example) to replace with the correct characters"
+"Minor features: relax ordering of ref and partial modifiers, parameter null checking, lambda discard parameters, native int s, attributes on local functions, function pointers, static lambdas, extension GetEnumerator , module initializers, and extending partial."
+"C# 10 released with .NET 6.0 (November 2021). Major new features : record structs, struct parameterless constructors, interpolated string handlers, global using directives, file-scoped namespace declarations, extended property patterns, const interpolated strings, mixed assignment and declaration in deconstruction, async method builders (via attributes) for individual methods, the CallerArgumentExpression attribute for parameters, enhanced #line pragmas."
+"C# 11 released with .NET 7.0 (November 2022). Major new features : file-scoped types, generic math support, auto-default structs, pattern match Span<char> on a constant string, extended nameof scope, numeric IntPtr , UTF-8 string literals, required members, ref fields and scoped ref , raw string literals, improved method group conversion to delegate, warning wave 7, generic attributes, newlines in string interpolation expressions, list patterns"
+"Recently, after picking up Web API 2, for sending back general errors we now use the IHttpActionResult interface, specifically the built in classes for in the System.Web.Http.Results namespace such as NotFound, BadRequest when they fit, if they don't we extend them, for example a NotFound result with a response message:"
+"Could you further clarify what I would do if I had nested for loops, and wanted to skip the iteration of one of the extended ones?"
+Provides a simple implementation of the HttpWorkerRequest abstract class that can be used to host ASP.NET applications outside an Internet Information Services (IIS) application . You can employ SimpleWorkerRequest directly or extend it.
+Here's the code for DateTimeExtended that does not throw an exception:
+"AddWithoutValidation as suggested by Robert Levy may work, but you can also set the content type when creating the request content itself (note that the code snippet adds application/json in two places-for Accept and Content-Type headers):"
+This adds 1 and 2 to make 3 . Then adds 3 (result of previous) and 3 (next element in sequence) to make 6 . Then adds 6 and 4 to make 10 .
+"This can complicate your code, and adds a second responsibility to the code (the responsibility of controlling the context), and is a violation of the Single Responsibility Principle ."
+An Event declaration adds a layer of abstraction and protection on the delegate instance.  This protection prevents clients of the delegate from resetting the delegate and its invocation list and only allows adding or removing targets from the invocation list.
+"After .NET 4, IEnumerable<T> was marked covariant, and became IEnumerable<out T> .  Since IEnumerable<out T> only uses the elements within it, and never adds/changes them, it's safe for it to treat an enumerable collection of strings as an enumerable collection of objects, which means it's covariant ."
+You need .Net 4.6 to use it with IFormattable as only the new framework version adds System.FormattableString :
+This is using a combination of Lambdas and LINQ to achieve the solution.  The Select function is a projection style method which will apply the passed in delegate (or lambda in this case) to every value in the original collection.  The result will be returned in a new IEnumerable<TargetType> .  The .ToList call is an extension method which will convert this IEnumerable<TargetType> into a List<TargetType> .
+"As per comments, in .Net Core 2+ / NetStandard 2.1+ / Net 5, MS added the extension method GetValueOrDefault()"
+"See Mocking Static Methods for Unit Testing by Paul Irwin, it has nice examples."
+"The final result depends on a combination of server-supplied MIME type headers, file extension, and/or the data itself"
+"You can probably do a typed cloning extension method, but I think it would require a different name since extension methods have less priority than original ones."
+"i.e. separate the multiple extensions with a semicolon -- thus, Image Files|*.jpg;*.jpeg;*.png;... ."
+"C# 3.0 released with .NET 3.5 and VS2008 (November 2007). Major new features: lambda expressions, extension methods, expression trees, anonymous types, implicit typing ( var ), and query expressions"
+"C# 6.0 released with .NET 4.6 and VS2015 (July 2015). Implemented by Roslyn . Features : initializers for automatically implemented properties, using directives to import static members, exception filters, element initializers, await in catch and finally , extension Add methods in collection initializers."
+"If you're using .NET 3.0 or above, you could rewrite the above method as an extension method of the Control class, which would then simplify the call to:"
+"However, I would be careful adding an extension method like this to string as (without namespace control) it will appear on all instances of string whether they hold an enum or not (so 1234.ToString().ToEnum(StatusEnum.None) would be valid but nonsensical) . It's often be best to avoid cluttering Microsoft's core classes with extra methods that only apply in very specific contexts unless your entire development team has a very good understanding of what those extensions do."
+You could use the JavaScriptSerializer class (add reference to System.Web.Extensions ):
+An alternative deserialisation approach is suggested here .  I modified the code slightly to fix a bug and suit my coding style.  All you need is this code and a reference to System.Web.Extensions from your project:
+"You can't query against the DataTable 's Rows collection, since DataRowCollection doesn't implement IEnumerable<T> . You need to use the AsEnumerable() extension for DataTable . Like so:"
+"And as @Keith says, you'll need to add a reference to System.Data.DataSetExtensions"
+"AsEnumerable() returns IEnumerable<DataRow> . If you need to convert IEnumerable<DataRow> to a DataTable , use the CopyToDataTable() extension."
+Shuffle any (I)List with an extension method based on the Fisher-Yates shuffle :
+"Be sure to use System.Net.Mail , not the deprecated System.Web.Mail . Doing SSL with System.Web.Mail is a gross mess of hacky extensions."
+"The implicit here means it applies to all DateTimeFormatInfo (as long as the extension type is in scope via the using directives, the same as extension methods); if it was explicit , you'd need to assign a DateTimeFormatInfo to a DateTimeFormatInfoExtension value."
+"Note that other techniques of obtaining arrays exist, such as the Linq ToArray() extensions on IEnumerable<T> ."
+"You could write your own ToDictionary2 extension method of course (with a better name, but I don't have time to think of one now) - it's not terribly hard to do, just overwriting (or ignoring) duplicate keys"
+"No.  Extension methods require an instance variable (value) for an object.  You can however, write a static wrapper around the ConfigurationManager interface.  If you implement the wrapper, you don't need an extension method since you can just add the method directly."
+"While you can use a ForEach extension method, if you want to use just the framework you can do"
+"There are also several convenience extension methods available, such as serviceProvider.GetService<IFooService>() (add a using for Microsoft.Extensions.DependencyInjection )."
+"Predicate is just a special cased Func<T, bool> really, introduced before all of the Func and most of the Action delegates came along"
+All Func delegates return something; all the Action delegates return void.
+A delegate can be seen as a placeholder for a/some method(s).
+"By defining a delegate, you are saying to the user of your class, "" Please feel free to assign any method that matches this signature to the delegate and it will be called each time my delegate is called ""."
+"Most of the time, you can use other ways to achieve the same purpose and I do not believe you can ever be forced to create delegates"
+"To understand event handlers, you need to understand delegates . In C# , you can think of a delegate as a pointer (or a reference) to a method"
+"Lambda expressions are a simpler syntax for anonymous delegates and can be used everywhere an anonymous delegate can be used.  However, the opposite is not true; lambda expressions can be converted to expression trees which allows for a lot of the magic like LINQ to SQL."
+The following is an example of a LINQ to Objects expression using anonymous delegates then lambda expressions to show how much easier on the eye they are:
+The C# specification explicitly states (IIRC) that if you have two anonymous functions (anonymous methods or lambda expressions) it may or may not create equal delegates from that code. (Two delegates are equal if they have equal targets and refer to the same methods.)
+"(I can't find the relevant bit of the spec, but I'd be quite surprised to see the C# compiler aggressively try to create equal delegates"
+"Even that would be tricky to implement within Delegates.AutoUnsubscribe because you'd have to create a new EventHandler (which would be just a generic type argument). Doable, but messy."
+"Seems like a pretty good explanation to me - a thread that has terminated (and can therefore no longer release any resources), but whose resources (e.g. handles) are still around and (potentially) causing problems."
+"This program starts a thread Target which opens a file and then immediately kills itself using ExitThread . The resulting zombie thread will never release the handle to the ""test.txt"" file and so the file will remain open until the program terminates (you can check with process explorer or similar). The handle to ""test.txt"" won't be released until GC.Collect is called - it turns out it is even more difficult than I thought to create a zombie thread that leaks handles)"
+"As long as your code cleans up after itself correctly (use Safe Handles or equivalent classes if working with unmanaged resources), and as long as you don't go out of your way to kill threads in weird and wonderful ways (safest way is just to never kill threads - let them terminate themselves normally, or through exceptions if necessary), the only way that you are going to have something resembling a zombie thread is if something has gone very wrong (e.g. something goes wrong in the CLR)."
+"To avoid boxing, the best way to compare generics for equality is with EqualityComparer<T>.Default . This respects IEquatable<T> (without boxing) as well as object.Equals , and handles all the Nullable<T> ""lifted"" nuances"
+"For example, if the async method awaits something that requires a UI event to complete, then you'll deadlock even with the nested context"
+"AsyncAwait_GetSomeDataAsync awaits the Task ; since it is not complete, AsyncAwait_GetSomeDataAsync returns an uncompleted Task ."
+I would prefer WhenAll which will perform your operations asynchronously in Parallel.
+"When you use async / await , there is no guarantee that the method you call when you do await FooAsync() will actually run asynchronously.  The internal implementation is free to return using a completely synchronous path."
+"If you're making an API where it's critical that you don't block and you run some code asynchronously, and there's a chance that the called method will run synchronously (effectively blocking), using await Task.Yield() will force your method to be asynchronous, and return control at that point.  The rest of the code will execute at a later time (at which point, it still may run synchronously) on the current context."
+"Doesn't this mean the task isn't async at all and is performed synchronously (so much effort for nothing), or will the task be performed asynchronously and when it's done the rest of the query is executed?"
+"They both start all asynchronous operations ( events.Select(...) ), then asynchronously wait for all the operations to complete in any order ( await Task.WhenAll(...) ), then proceed with the rest of the work ( Where... )."
+"If testing asynchronously, Assert.ThrowsAsync follows similarly to the previously given example, except that the assertion should be awaited,"
+It supports storing values of a specific type without casting to or from object (which would have incurred boxing/unboxing overhead when T is a value type in the ArrayList case). ArrayList simply stores object references
+"If randomObject might be an instance of TargetType and TargetType is a value type, then we can't use as with TargetType itself, but we can use a nullable type: TargetType? convertedRandomObject = randomObject as TargetType?;"
+"If randomObject might be an instance of TargetType and TargetType is a value type, then we can't use as with TargetType itself, but we can use a nullable type:"
+"For normal DateTimes,  if you don't initialize them at all then they will match DateTime.MinValue , because it is a value type rather than a reference type."
+"In C#, the 'int' type is the same as System.Int32 and is a value type (ie more like the java 'int'). An integer (just like any other value types) can be boxed (""wrapped"") into an object."
+"Return default (or default(T) for older versions of C#)  which means you'll return null if T is a reference type (or a nullable value type), 0 for int , '\0' for char , etc. ( Default values table (C# Reference) )"
+"If randomObject might be an instance of TargetType and TargetType is a reference type, then use code like this: TargetType convertedRandomObject = randomObject as TargetType;"
+"If randomObject might be an instance of TargetType and TargetType is a reference type, then use code like this:"
+In this case it doesn't matter whether TargetType is a reference type or a value type.
+"There may be other cases involving generics where is is useful (because you may not know whether T is a reference type or not, so you can't use as) but they're relatively obscure."
+Nullable string? x; x is a reference type - So by default non-nullable
+Non-Nullable string y; y is a reference type - So by default non-nullable. y = null Generates a warning since you assign a null value to something that is not supposed to be null.
+"I think a lot of people concentrate on the fact that this value is nullable, and don't think about what they actually want :)"
+"x = y Illegal! Warning: ""y"" may be null The left side of the assignment is non-nullable but the right side is nullable"
+"The null literal type is the only type that is nullable by default! But as we learned, the nullability of any type can be overridden with ! to non-nullable."
+"With your cursor inside the parentheses, use the keyboard shortcut Ctrl - Shift - Space . If you changed the default, this corresponds to Edit.ParameterInfo ."
+The knowledge of C# implies some knowledge of .NET (because the C# object model corresponds to the .NET object model and you can do something interesting in C# just by using .NET libraries). The opposite isn't necessarily true as you can use other languages to write .NET applications.
+"That corresponds to the long (or Int64 ), a 64-bit integer."
+"If an interface is a collection of slots that contain methods, then some of those slots can also contain the get and set methods of a property, the get and set methods of an indexer, and the add and remove methods of an event.  But a field is not a method . There's no ""slot"" associated with a field that you can then ""fill in"" with a reference to the field location"
+LINQ solution is strictly for style points - since Contains iterates over all items its complexity is O(range_size) and not O(1) normally expected from a range check
+"More generic version for other ranges (notice that second argument is count, not end): if (Enumerable.Range(start, end - start + 1).Contains(x)"
+"In general, it is a bad idea to blindly call .Value on a nullable type, unless you have some prior knowledge that that variable MUST contain a value (i.e. through a .HasValue check)."
+"If you do and you are using native IoC from .NET Core (or any other IoC-Container) and you are getting this error, make sure to register your DbContext as Transient"
+"For IL-compiled code the C# compiler inserts the default values at compile time (hard-coded), because the CLR does not support calling methods with optional arguments either when the arguments are not provided explicitly."
+"In addition to entity types, an EF Core model can contain query types,"
+"The Exception.ToString() method will give a much more verbose output, containing the exception type, the message (from before), a stack trace, and all of these things again for nested/inner exceptions"
+"Where the exception contains culture-sensitive data, the string representation returned by ToString is required to take into account the current system culture"
+"Check the InnerException property of the TypeInitializationException ; it is likely to contain information about the underlying problem, and exactly where it occurred."
+"The options were changed a bit in ASP.NET Core, here they are ( credits ):"
+"new FileExtensionContentTypeProvider().TryGetContentType(fileName, out contentType); (vNext only) Never tested, but looks like you can officially expand the mime types list via the exposed Mappings property."
+"Never tested, but looks like you can officially expand the mime types list via the exposed Mappings property."
+Copy the MimeMappings file from the reference source of the .NET Framework
+"Use the System.Web.MimeMapping.GetMimeMapping method, that is part of the BCL in .NET Framework 4.5:"
+"If you need to add custom mappings you probably can use reflection to add mappings to the BCL MimeMapping class, it uses a custom dictionary that exposes this method, so you should invoke the following to add mappings (never tested tho, but should prob. work)."
+"Anyway, when using reflection to add MIME types, be aware that since you're accessing a private field, its name might change or even be totally removed, so you should be extra cautious and add double checks and provide fail safe action for every step."
+"There are lots of ways of skinning this cat, but basically they'll all use type inference somewhere - which means you've got to be calling a generic method (possibly as an extension method). Another example might be:"
+"However, I must admit I changed my stance on that issue; a ForEach() extension method would indeed be useful in some situations."
+"Type checking: foreach is done at runtime, ForEach() is at compile time (Big Plus!)"
+The syntax to call a delegate is indeed much simpler: objects.ForEach(DoSomething);
+ForEach() could be chained: although evilness/usefulness of such a feature is open to discussion.
+Those are all great points made by many people here and I can see why people are missing the function
+I wouldn't mind Microsoft adding a standard ForEach method in the next framework iteration.
+It features browser controls for WPF and Winforms and has tons of features and extension points.  Being based on Chromium it's blisteringly fast too.
+Additionally for model errors in our actions we will hand the model state dictionary to the Request.CreateErrorResponse extension and wrap it in a HttpResponseException . Adding the model state dictionary results in a list of the model errors sent in the response body.
+"I found it ... I didn't have an extra package, called Microsoft.Owin.Host.SystemWeb"
+"Now - i am not sure if i just missed everything, though found NO reference to such a library or package when going through various tutorials"
+It also didn't get installed when i installed all this Identity framework... Not sure if it were just me..
+"EDIT Although it's in the Microsoft.Owin.Host.SystemWeb assembly it is an extension method in the System.Web namespace, so you need to have the reference to the former, and be using the latter."
+"A method group is the name for a set of methods (that might be just one) - i.e. in theory the ToString method may have multiple overloads (plus any extension methods): ToString() , ToString(string format) , etc - hence ToString by itself is a ""method group""."
+"That will work fine (no exception). Extension methods don't use virtual calls (i.e. it uses the ""call"" il instruction, not ""callvirt"") so there is no null check unless you write it yourself in the extension method"
+This is an extension method . See here for an explanation .
+"Extension Methods enable a variety of useful scenarios, and help make"
+"These are the files extensions to delete: .csproj .user .sln Example: Let's say that the name of your Project is called Target_Shoot , these are what the files to delete should look like: Target_Shoot.csproj Target_Shoot.Editor.csproj Target_Shoot.Editor.csproj.user Target_Shoot.Player.csproj Target_Shoot.Player.csproj.user Target_Shoot.sln Do not delete anything else."
+For a (left outer) join of a table Bar with a table Foo on Foo.Foo_Id = Bar.Foo_Id in lambda notation:
+"To test this use either a different browser or uninstall the ad blocking plugin (right clicking the extension by the URL bar and clicking ""Remove from Chrome..."")."
+"In Chrome, opening an Incognito tab will usually stop extensions running (unless you have specifically told Chrome which ones to run in Incognito)."
+"Note: if you're not seeing the overload extension method of service.Configure<> that takes IConfiguration as parameter, you probably need to install Microsoft.Extensions.Options.ConfigurationExtensions NuGet package."
+"We have an extension method to do exactly this in MoreLINQ . You can look at the implementation there, but basically it's a case of iterating through the data, remembering the maximum element we've seen so far and the maximum value it produced under the projection."
+Although I am surprised there isn't a way to get this directly from the FileInfo (or at least I can't see it).
+"The Linq OfType() extension method also uses the is operator and the cast.  This is however a cast to a generic type.  The JIT compiler generates a call to a helper function, JIT_Unbox() that can perform a cast to an arbitrary value type.  I don't have a great explanation why it is as slow as the cast to Nullable<int> , given that less work ought to be necessary.  I suspect that ngen.exe might cause trouble here."
+"MonoDevelop does not support Debug-StepThrough on Linux in .NET Core, though, since MS does not license their debugging API dll (except for VisualStudio Mac ... ). However, you can use the Samsung debugger for .NET Core through the .NET Core debugger extension for Samsung Debugger for MonoDevelop"
+(To quote from the wiki article on the probabilty of a collision:
+"First of all, you need to make sure you have the right version of ASP.Net installed and that you have installed the IIS extensions."
+"Check if you included the .net 4 version of System.Web.Extensions - there's a 3.5 version as well, but I don't think that one works."
+"You could use the JavaScriptSerializer class , check this article to build an useful extension method."
+You probably will need to install Microsoft.Extensions.Logging.Abstractions package to use ILogger<T> .
+You are using SimpleWorkerRequest in a scenario that it wasn't designed for
+You are using it inside of IIS . If you look at the prior MSDN link (emphasis is mine):
+"Also, if you look at the MSDN documentation for the System.Web.Hosting namespace ( SimpleWorkerRequest is in this namespace), you will also see something similar to the above (again, emphasis is mine):"
+The System.Web.Hosting namespace provides the functionality for hosting ASP.NET applications from managed applications outside Microsoft Internet Information Services (IIS) .
+"I would recommend removing the call to SimpleWorkerRequest . Instead, you can use a Microsoft solution to make sure your web site automatically starts up after it recycles"
+"What you need is the Microsoft Application Initialization Module for IIS 7.5 . It is not complicated to configure, but you need to understand the exact options"
+This is why I would also recommend the Application Initialization UI for IIS 7.5 . The UI is written by an MSDN blogger.
+"So what exactly does the Microsoft solution do? It does what you are trying to do - IIS sends a ""get"" request to your website after the application pool is started."
+"C# 7.3 released with VS2017 v15.7 (May 2018). New features: enum, delegate and unmanaged generic type constraints . ref reassignment"
+If you're happy to restrict T to be a reference type with the where T : class constraint and then return null as normal
+"If you're happy to restrict T to be a non-nullable value type with the where T : struct constraint, then again you can return null as normal from a method with a return value of T? - note that this is not returning a null reference, but the null value of the nullable value type."
+Check out this .NET Blog post and the actual documentation .
+"Starting in .NET 7, you can make use of interfaces such as INumber and IFloatingPoint to create programs such as:"
+There are also interfaces such as IAdditionOperators and IComparisonOperators so you can make use of specific operators generically.
+That is a constraint on the generic parameter T . It must be a class (reference type) and must have a public parameter-less default constructor.
+On EF core you cannot create Indexes using data annotations.But you can do it using the Fluent API.
+"Note that using the new() constraint on T is only to make the compiler check for a public parameterless constructor at compile time, the actual code used to create the type is the Activator class."
+"There is a one-way implicit conversion built in to the .Net framework that lets you pass a DateTime into any DateTimeOffset parameter or variable.  When doing so, the .Kind matters .  If you pass a UTC kind, it will carry in with a zero offset, but if you pass either .Local or .Unspecified , it will assume to be local .  The framework is basically saying, ""Well, you asked me to convert calendar time to instantaneous time, but I have no idea where this came from, so I'm just going to use the local calendar.""  This is a huge gotcha if you load up an unspecified DateTime on a computer with a different timezone.  (IMHO - that should throw an exception - but it doesn't.)"
+and adding user-defined type conversion operator public static explicit operator AuthenticationMethod(string str)
+My guess is that we are somewhere caching the fact that the optimized form of (int?)Foo() is new int?(op_implicit(Foo().Value)) but that is not actually the optimized form we want; we want the optimized form of Foo()-replaced-with-temporary-and-then-converted.
+"A word to the wise: every time you cache a fact for use later, you are potentially creating an inconsistency should something relevant change . In this case the relevant thing that has changed post initial analysis is that the call to Foo() should always be realized as a fetch of a temporary."
+UPDATE: I rewrote the nullable optimizer from scratch for Roslyn; it now does a better job and avoids these sorts of weird errors
+"For some thoughts on how the optimizer in Roslyn works, see my series of articles which begins here: https://ericlippert.com/2012/12/20/nullable-micro-optimizations-part-one/"
+"This can happen if you do not initialize a value to a DateTime field; the field does not accept NULL values, and it's a value type, so the default value of the non-nullable DateTime type will be used."
+"The value of default(DateTime) is DateTime.MinValue (or new DateTime(1, 1, 1) or 01/01/0001), which is not a valid SQL datetime value."
+"The lowest valid value for SQL Server datetime is 01/01/1753 due to its use of a Gregorian calendar.  SQL Server DateTime2 however supports dates starting at 01/01/0001.  Entity Framework by default uses DateTime2 for representing dates, so the generated SQL is implicitly coercing the generated DateTime2 value to a DateTime value on the SQL Server-side."
+What is the output? It depends! If Point is a struct then the output is 1 but if Point is a class then the output is 2 ! A boxing conversion makes a copy of the value being boxed explaining the difference in behavior.
+"Not all conversions are possible, though, and you may need to write special case logic if you want to support conversions from types that are not IConvertible ."
+compiler error C2678 (MSVC) : binary '!=' : no operator found which takes a left-hand operand of type 'Test' (or there is no acceptable conversion)`.
+"Clearly the machine code the JIT compiler can generate for the first case is much more efficient.  One rule that really helps there is that an object can only be unboxed to a variable that has the same type as the boxed value.  That allows the JIT compiler to generate very efficient code, no value conversions have to be considered."
+"The is operator test is easy, just check if the object isn't null and is of the expected type, takes but a few machine code instructions.  The cast is also easy, the JIT compiler knows the location of the value bits in the object and uses them directly.  No copying or conversion occurs, all machine code is inline and takes but about a dozen instructions.  This needed to be really efficient back in .NET 1.0 when boxing was common."
+"Casting to int? takes a lot more work.  The value representation of the boxed integer is not compatible with the memory layout of Nullable<int> .  A conversion is required and the code is tricky due to possible boxed enum types.  The JIT compiler generates a call to a CLR helper function named JIT_Unbox_Nullable to get the job done.  This is a general purpose function for any value type, lots of code there to check types.  And the value is copied.  Hard to estimate the cost since this code is locked up inside mscorwks.dll, but hundreds of machine code instructions is likely."
+This method does not support custom conversion operators. ( see Why does the Linq Cast<> helper not work with the implicit cast operator? )
+"I am not sure whether I understood your intentions correctly, but let's see if this one helps."
+(or ref parameters?) That's a limitation of the CLR. We chose to
+"Especially considering Mono (which is open), there are some mono-specific technical limitations considering inlining or more general one (like virtual functions). Overall, yes, this is a hint to compiler, but I guess that is what was asked for."
+"Note: the answer below was written a long time prior to C# 6, which is planning to introduce the ability to declare parameterless constructors in structs - but they still won't be called in all situations (e.g. for array creation) (in the end this feature was not added to C# 6 )... but then it was added in C# 10 - but there are limitations, so you can't expect the constructor to run in every situation."
+"C# 7.2 released with VS2017 v15.5 (November 2017). New features: private protected access modifier , Span<T>, aka interior pointer, aka stackonly struct , and everything else ."
+"C# 13 releasing with .NET 9.0 (November 2024). Major new features : params collections, new Lock type and semantics, new Escape sequence \e , method group natural type improvements, implicit indexer access in object initializers, ref locals and unsafe contexts in iterators and async methods, ref struct types to can implement interfaces, partial properties and indexers, ref struct types, overload resolution priority"
+"In this case, if you access members of such objects, it causes a NullReferenceException ."
+"This means the reference is null , and you cannot access members (such as methods) through a null reference"
+"When you return an empty model (or model property) from your controller, the exception occurs when the views access it:"
+"If we attempt to dereference the second int in the struct, the CLR will not attempt to access the storage at location zero; it will access the storage at location four"
+const 's are implicitly static . You use a ClassName.ConstantName notation to access them.
+Enumerator is public because Dictionary is enumerable and must have equal accessibility to the IEnumerator interface implementation - e.g
+Properties expose fields.  Fields should (almost always) be kept private to a class and accessed via get and set properties.  Properties provide a level of abstraction allowing you to change the fields while not affecting the external way they are accessed by the things that use your class.
+"Unfortunately, VS2010 (and earlier, obviously) does not support adding netmodule references, which means you'd have to leave it in 2 separate assemblies when you're debugging.  The only way you can add them as part of your assembly would be to run csc.exe yourself using the /addmodule:{files} command line argument.  It wouldn't be too painful in an MSBuild script.  Of course, if you're brave or stupid, you can run csc yourself manually each time.  And it certainly gets more complicated as multiple assemblies need access to it."
+"In other words, every await in MyAsyncMethod should end with ConfigureAwait(false) . This means it can't update any UI elements or access the ASP.NET request context."
+So it can't update UI elements or access the ASP.NET request context
+If you have access to C#7 and the latest .NET this is the best way.
+"Calling subscribers.Values.ToList() copies the values of subscribers.Values to a separate list at the start of the foreach . Nothing else has access to this list (it doesn't even have a variable name!), so nothing can modify it inside the loop."
+"Use a .NET Standard library when you want to increase the number of applications that will be compatible with your library, and you are okay with a decrease in the .NET API surface area your library can access."
+"Use a .NET Core library when you want to increase the .NET API surface area your library can access, and you are okay with allowing only .NET Core applications to be compatible with your library."
+"The library will not have access to some parts of the .NET API, though"
+"Coming back to libraries, the .NET Standard library templates exist to run on multiple runtimes (at the expense of API surface area). Conversely, the .NET Core library templates exist to access more API surface area (at the expense of compatibility) and to specify a platform against which to build an executable."
+Updated NOTE on this solution : Checking with FileAccess.ReadWrite will fail for Read-Only files so the solution has been modified to check with FileAccess.Read .
+"If it is disabled, then you have to turn on Less secure app access , which is not recommended! So better enable the 2-Step verification."
+"C# supports ""iterator blocks"" (called ""generators"" in some other popular languages). NullReferenceException can be particularly tricky to debug in iterator blocks because of deferred execution:"
+When the longRunningTask is done then a thread from the ThreadPool (can be any thread) will return to MyMethodAsync() in its previous context and continue execution (in this case printing the result to the console).
+"This works on Visual聽Studio聽2008 and higher: Project + Add New Item, select ""Application Manifest File"". Change the <requestedExecutionLevel> element to:"
+"Also, it is worth mentioning that [WebMethod] attribute with CacheDuration property set can avoid unnecessary execution of the web service method."
+Stopwatch is designed for this purpose and is one of the best ways to measure time execution in .NET.
+"When an async method resumes execution, it grabs a thread from the ASP.NET thread pool"
+"In your example, the point is that if a is null , then a?.PropertyOfA will evaluate to null rather than throwing an exception - it will then compare that null reference with foo (using string's == overload), find they're not equal and execution will go into the body of the if statement."
+This could be due to the current user having an undefined ExecutionPolicy .
+At least one of the Task instances was canceled -or- an exception was thrown during the execution of at least one of the Task instances
+"When you (as in, the thing we're waiting for) get around to completing, let me know because I still have some code left to execute"". Actually it will let the SynchronizationContext class know that it is done, which, depending on the actual synchronization context that is in play right now, will queue up for execution"
+"Actually it will let the SynchronizationContext class know that it is done, which, depending on the actual synchronization context that is in play right now, will queue up for execution"
+"You should not use Directory.GetCurrentDirectory() in your case, as the current directory may differ from the execution folder, especially when you execute the program through a shortcut."
+Loops with small bodies are improved by repeating the code up to 4 times in the body and looping less.  Reduces the branch cost and improves the processor's super-scalar execution options.
+"The effective result of these optimizations on your program's execution time is often affected by code that runs elsewhere.  Reading a file, executing a dbase query, etc.  Making the work the JIT optimizer does completely invisible.  It doesn't mind though :)"
+You need to run PowerShell as administrator and set it on the client PC to Unrestricted
+"Memory is virtualized in Windows ; each process gets a virtual memory space of many ""pages"" of memory that are tracked by the operating system"
+The .NET runtime then detects this error and turns it into the NullReferenceException .
+"What about the second point? Dereferencing any invalid pointer that falls in the lowest page of virtual memory causes the same operating system error, and thereby the same exception."
+"Why does this make sense?  Well, suppose we have a struct containing two ints, and an unmanaged pointer equal to null"
+"If you are working with unsafe code and you get a NullReferenceException , just be aware that the offending pointer need not be null"
+Note that the [Flags] attribute doesn't enable this by itself - all it does is allow a nice representation by the .ToString() method:
+"The values, if declared this way, will be Yellow = 0, Green = 1, Red = 2, Blue = 3"
+So when you retrieve the value you are actually performing bitwise AND & on the values:
+"And regarding the use of 0 in your enumeration, quoting from MSDN:"
+Use None as the name of the flag enumerated constant whose value is zero
+You cannot use the None enumerated constant in a bitwise AND operation to test for a flag because the result is always zero
+"If the hash-code for two items does not match, they may never be considered equal ( Equals will simply never be called)."
+The GetHashCode() method should reflect the Equals logic; the rules are:
+if two things are equal ( Equals(...) == true ) then they must return the same value for GetHashCode()
+"if the GetHashCode() is equal, it is not necessary for them to be the same; this is a collision, and Equals will be called to see if it is a real equality or not."
+"In this case, it looks like "" return FooId; "" is a suitable GetHashCode() implementation"
+"If you are testing multiple properties, it is common to combine them using code like below, to reduce diagonal collisions (i.e. so that new Foo(3,5) has a different hash-code to new Foo(5,3) ):"
+"In modern frameworks, the HashCode type has methods to help you create a hashcode from multiple values; on older frameworks, you'd need to go without, so something like:"
+"Oh - for convenience, you might also consider providing == and != operators when overriding Equals and GetHashCode ."
+"Jeff, your code is nice but could be clearer with constants (as suggested in Code Complete)."
+"The source referenced by the OP has some credibility ...but what about Microsoft - what is the stance on struct usage? I sought some extra learning from Microsoft , and here is what I found:"
+"It logically represents a single value, similar to primitive types (integer, double, and so on)."
+The 'JonnyCantCode.com' source got 3 out of 4 - quite forgivable since #4 probably wouldn't be an issue
+Entry is never passed as a parameter outside of the Dictionary class
+"Further investigation shows that in order to satisfy implementation of IEnumerable, Dictionary uses the Enumerator struct which it copies every time an enumerator is requested ...makes sense."
+Capacity:  312874 MemSize:  2660827 bytes Completed Resize:  26ms Total time to fill:  964ms
+Any difference if Dictionary is initialized with the Capacity? Not enough to be concerned with ... 12ms .
+"What happens is, because Entry is a struct, it does not require initialization like a reference type"
+"In order to use Entry as a reference type, I had to insert the following code:"
+The reason I had to initialize each array element of Entry as a reference type can be found at MSDN: Structure Design . In short:
+It is actually quite simple and we will borrow from Asimov's Three Laws of Robotics :
+You can have a static field somewhere (be careful about thread safety issues): static Random rnd = new Random();
+You can have a static field somewhere (be careful about thread safety issues):
+Ask the Random instance to give you a random number with the maximum of the number of items in the ArrayList : int r = rnd.Next(list.Count);
+Ask the Random instance to give you a random number with the maximum of the number of items in the ArrayList :
+"You could use this code, which should also work in Iran and China-"
+EDIT: You generally create a Lookup using Enumerable.ToLookup . This does assume that you don't need to change it afterwards - but I typically find that's good enough.
+"If that doesn't work for you, I don't think there's anything in the framework which will help - and using the dictionary is as good as it gets :("
+How can I exactly construct a time stamp of actual time with milliseconds precision?
+"I suspect you mean millisecond accuracy . DateTime has a lot of precision, but is fairly coarse in terms of accuracy"
+Usually the system clock (which is where DateTime.Now gets its data from) has a resolution of around 10-15 ms
+See Eric Lippert's blog post about precision and accuracy for more details.
+"If you need more accurate timing than this, you may want to look into using an NTP client."
+"I'd advise you to use DateTime.UtcNow rather than DateTime.Now though, to avoid time zone issues around daylight saving transitions, etc."
+"If your question is actually just around converting a DateTime to a string with millisecond precision, I'd suggest using:"
+"(Note that unlike your sample, this is sortable and less likely to cause confusion around whether it's meant to be ""month/day/year"" or ""day/month/year"".)"
+"Well, the short answer is ""because that's the way the compiler designers designed it.""  Realistically, though, your collection object is null, so there's no way for the compiler to get the enumerator to loop through the collection."

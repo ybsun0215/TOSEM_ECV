@@ -1,0 +1,18 @@
+[
+  {
+    "relation_types": "[depends on, takes, relies on, converted by, converts, convert to, preferred over, better to use, recommended over]",
+    "output": "### new relation types and their definitions ###\nDependency: One entity relies on another entity for its functionality or execution.\nConversion: One entity is transformed into another entity or format.\nPreference: One entity is favored over another entity in terms of usage or efficiency.\n### relation type mapping ###\ndepends on: Dependency; takes: Dependency; relies on: Dependency; converted by: Conversion; converts: Conversion; convert to: Conversion; preferred over: Preference; better to use: Preference; recommended over: Preference"
+  },
+  {
+    "relation_types": "[implements, implements with, implemented by, collaborates with, works with, used with, used in, part of, contains]",
+    "output": "### new relation types and their definitions ###\nImplementation: One entity is realized or executed by another entity.\nCollaboration: One entity communicates or works with another entity.\nContainment: One entity includes or holds another entity within it.\n### relation type mapping ###\nimplements: Implementation; implements with: Implementation; implemented by: Implementation; collaborates with: Conversion; works with: Conversion; used with: Conversion; used in: Containment; part of: Containment; contains: Containment"
+  },
+  {
+    "relation_types": "[updates, copied to, reset by, creates, method of creation, generates, compared with, differ in, different in, can be replaced by, supplants, change to]",
+    "output": "### new relation types and their definitions ###\nModification: One entity alters or changes another entity.\nCreation: One entity generates or produces another entity.\nDifference: One entity is considered different to another entity.\nReplacement: One entity is substituted or exchanged for another entity.\n### relation type mapping ###\nupdates: Modification; copied to with: Modification; reset by: Modification; creates: Creation; method of creation: Creation; generates: Creation; compared with: Difference; differ in: Difference; different in: Difference; can be replaced by: Replacement; supplants: Replacement; change to: Replacement"
+  },
+  {
+    "relation_types": "[followed by, initiates, executed by, can be passed via, returned by, receives data from, maintains, provides, backed by, provides unmodifiable view, clarification needed on, behavior on empty collection, equivalent to, similar to, no difference with]",
+    "output": "### new relation types and their definitions ###\nExecution: One entity initiates or carries out the operation of another entity.\nAccess: One entity retrieves or obtains data from another entity.\nSupport: One entity provides assistance or resources to another entity.\nLimitation: One entity imposes restrictions or constraints on another entity.\nEquivalence: One entity is considered equal or similar to another entity.\n### relation type mapping ###\nfollowed by: Execution; initiates: Execution; executed by: Execution; can be passed via: Access; returned by: Access; receives data from: Access; maintains: Support; provides: Support; backed by: Support; provides unmodifiable view: Limitation; clarification needed on: Limitation; behavior on empty collection: Limitation; equivalent to: Equivalence; similar to: Equivalence; no difference with: Equivalence"
+  }
+]

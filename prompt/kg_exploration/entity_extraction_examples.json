@@ -1,0 +1,26 @@
+[
+  {
+    "text": "Inside bufio.ReadWriter, the struct anonymously includes both bufio.Reader and bufio.Writer.",
+    "output": "### entities ###\nbufio.ReadWriter, bufio.Reader, bufio.Writer"
+  },
+  {
+    "text": "The encoding/json package uses reflection (reflect package) to access fields of structs",
+    "output": "### entities ###\nencoding/json, reflection"
+  },
+  {
+    "text": "Then what happens here is that we assigned a new template.Template value to t, which was the result of parsing t2src, so that will be the default, but still both templates can be \"reached\" from it as they are associated",
+    "output": "### entities ###\ntemplate.Template"
+  },
+  {
+    "text": "Plus it has a DataSetHelper that lets you use DataSets and DataTables to easily work with Excel data.",
+    "output": "### entities ###\nDataSetHelper, DataSets, DataTables"
+  },
+  {
+    "text": "json.dumps() converts a dictionary to str object, not a json(dict) object! So you have to load your str into a dict to use it by using json.loads() method.",
+    "output": "### entities ###\njson.dumps(), json.loads()"
+  },
+  {
+    "text": "Every Iterator implements IntoIterator which performs an identity conversion (into_iter() just returns the iterator it is called on), so you can use Iterator instances in for loops as well.",
+    "output": "### entities ###\nIterator, IntoIterator, into_iter()"
+  }
+]

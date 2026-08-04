@@ -1,0 +1,300 @@
+"Slice objects also behave slightly differently depending on the number of arguments, similar to range() , i.e. both slice(stop) and slice(start, stop[, step]) are supported."
+"Static methods in Python are similar to those found in Java or C++. For a more advanced concept, see classmethod() ."
+What about staticmethod ? It's pretty similar to classmethod but doesn't take any obligatory parameters (like a class method or instance method does).
+"The character category ""Mn"" stands for Nonspacing_Mark , which is similar to unicodedata.combining in MiniQuark's answer (I didn't think of unicodedata.combining, but it is probably the better solution, because it's more explicit)."
+"In python the with keyword is used when working with unmanaged resources (like file streams). It is similar to the using statement in VB.NET and C#. It allows you to ensure that a resource is ""cleaned up"" when the code that uses it finishes running, even if exceptions are thrown"
+"The following example is similar to the NamedTuple example below, but the resulting object is mutable and it allows for default values."
+"The printed output will be the same.  Under the hood, the generator object supports the iterator protocol and does something roughly similar to the class Counter."
+"Similar to the groupby paradigm, we specify all columns that will eventually be either row or column levels and set those to be the index.  We then unstack the levels we want in the columns.  If either the remaining index levels or column levels are not unique, this method will fail."
+"pd.DataFrame.pivot Very similar to set_index in that it shares the duplicate key limitation.  The API is very limited as well.  It only takes scalar values for index , columns , values . Similar to the pivot_table method in that we select rows, columns, and values on which to pivot.  However, we cannot aggregate and if either rows or columns are not unique, this method will fail."
+"Very similar to set_index in that it shares the duplicate key limitation.  The API is very limited as well.  It only takes scalar values for index , columns , values ."
+"Similar to the pivot_table method in that we select rows, columns, and values on which to pivot.  However, we cannot aggregate and if either rows or columns are not unique, this method will fail."
+"So when you do python -m test_A.test , it basically just discards the knowledge that test_A.test is actually stored in package (i.e. package is not considered a package). Attempting from ..A import foo is trying to access information it doesn't have any more (i.e. sibling directories of a loaded location). It's conceptually similar to allowing from ..os import path in a file in math . This would be bad because you want the packages to be distinct"
+"Conceptually, this is similar to a ForeignKey with unique=True , but the ""reverse"" side of the relation will directly return a single object."
+"There's a strong culture of tuples being for heterogeneous collections, similar to what you'd use struct s for in C, and lists being for homogeneous collections, similar to what you'd use arrays for.  But I've never quite squared this with the mutability issue mentioned in the other answers.  Mutability has teeth to it (you actually can't change a tuple), while homogeneity is not enforced, and so seems to be a much less interesting distinction."
+The with statement can thus be used in ways similar to the RAII pattern in C++: some resource is acquired by the with statement and released when you leave the with context.
+"It's similar to RawDescriptionHelpFormatter but instead of only applying to the description and epilog, RawTextHelpFormatter also applies to all help text (including arguments)."
+"tf.nn.softmax_cross_entropy_with_logits combines the softmax step with the calculation of the cross-entropy loss after applying the softmax function, but it does it all together in a more mathematically careful way.  It's similar to the result of:"
+"The basics - types of joins (LEFT, RIGHT, OUTER, INNER) merging with different column names merging with multiple columns avoiding duplicate merge key column in output"
+"A ""raw string literal"" is a slightly different syntax for a string literal, in which a backslash, \ , is taken as meaning ""just a backslash"" (except when it comes right before a quote that would otherwise terminate the literal) -- no ""escape sequences"" to represent newlines, tabs, backspaces, form-feeds, and so on.  In normal string literals, each backslash must be doubled up to avoid being taken as the start of an escape sequence."
+"If you need to handle the item not being there, then you can do what user Matt suggested in his comment and provide a default using a slightly different API:"
+which will return None if key is not in d . You can also provide a different default value that will be returned instead of None (unless the dict actually contains None as the value for this key):
+"You'll have to translate a little differently. kevpie mentions this in a comment on one of the answers, and it's noted in the documentation for str.translate ."
+Edit 2: A list of different versions if someone needs: https://storage.googleapis.com/tensorflow
+"For older Flask versions, or to return a different JSON-serializable object, import and use jsonify ."
+"Note: If you want a different default value instead of None , use the default parameter to .add_argument ."
+The error you get with json.loads is a totally different problem
+"mysql-config is in a different package, which can be installed from (again, assuming debian / ubuntu):"
+"So you may have to try accessing the site that was detecting you using a VPN, different network, etc."
+"You might also want to use --ignore-installed to force all dependencies to be reinstalled using this new prefix.  You can use --install-option to multiple times to add any of the options you can use with python setup.py install ( --prefix is probably what you want, but there are a bunch more options you could use)."
+of tests in different modules - will they be available to me if I put
+"The following instructions are basically how the different methods should be used (or at least how I was taught they should be used), but they are not absolute rules so you can mix them up if you feel necessary to."
+"Such scenario's are useful to see how different parts of your infrastructure can be affected by a single command – in this case your database (some kind of 'active' flag), your mail server, your system log, etc."
+"The way this works is slightly different than dreload . Some caveats apply, type %autoreload? to see what can go wrong."
+"In versions 1.0 - 2.7, exec was a statement, because CPython needed to produce a different kind of code object for functions that used exec for its side effects inside the function."
+"if you select by row first, and if the DataFrame has columns of different"
+"For starters, you need to learn which characters are special: ""metacharacters"" which need to be escaped (i.e. with a backslash placed in front - and the rules are different inside and outside character classes.) There is an excellent online tutorial at: www.regular-expressions.info . The time you spend there will pay for itself many times over"
+"This assumes that sorting the column names will give the order you want.  If your column names won't sort lexicographically (e.g., if you want column Q10.3 to appear after Q9.1), you'll need to sort differently, but that has nothing to do with pandas."
+"You can also add a cause to an exception, making the traceback explicit about the other exception (use different wording), and the context is ignored (but can still be introspected when debugging). Using raise ... from None lets you suppress the context being printed."
+"This will likely be faster than hasattr . If the property is likely to not be there most of the time, or you're not sure, using hasattr will probably be faster than repeatedly falling into an exception block."
+I'm not sure that anything much could be faster than the above.  It calls the function and returns.  Try/except doesn't introduce much overhead because the most common exception is caught without an extensive search of stack frames.
+"This is faster than s.replace with each char, but won't perform as well as non-pure python approaches such as regexes or string.translate, as you can see from the below timings.  For this type of problem, doing it at as low a level as possible pays off."
+"Using itertools.chain is faster than looping each list and appending elements one by one, since itertools is implemented in C. It also consumes less memory than converting each queryset into a list before concatenating."
+"RukTech's answer , df.set_value('C', 'x', 10) , is far and away faster than the options I've suggested below"
+"I was exploring to see if there's a faster option, since in my experience, summing flat arrays is (strangely) faster than counting"
+Your C routine runs in 8.4 seconds (faster than your run probably because of -O3 )
+"That's right, 7.95 seconds .  Consistently half a second faster than the C solution .  Without the -fllvm flag I'm still getting 8.182 seconds , so the NCG backend is doing well in this case too."
+"If the function you're trying to vectorize already is vectorized (like the x**2 example in the original post), using that is much faster than anything else (note the log scale):"
+"Jython compiles your Python code to Java bytecode, so your Python code can run on the JVM. IronPython lets you run Python on the Microsoft CLR . And PyPy, being implemented in (a subset of) Python, lets you run Python code faster than CPython, which rightly should blow your mind. :-)"
+"but, from the same doc: Beginning with Python 2.2, such cycles are automatically reclaimed when garbage collection is enabled and they become unreachable, but it remains more efficient to avoid creating cycles."
+"Beginning with Python 2.2, such cycles are automatically reclaimed when garbage collection is enabled and they become unreachable, but it remains more efficient to avoid creating cycles."
+"This way it's easy to select a small group of fields (which will work with a big table, but it's more efficient to do it this way... I think I may be able to fix this limitation in the future... this is more intuitive anyhow): (The following is pseudocode.)"
+"They may be most interesting to you in the final report generation stage (essentially a data column is segregated from other columns, which might impact efficiency somewhat if you define a lot)."
+"A dedicated web server is very good at serving static files efficiently, although you probably won't notice a difference compared to Flask at low volumes."
+Note that Counter is not particularly efficient ( timings ) and probably overkill here. set will perform better
+"The Flask dev server is not designed to be particularly secure, stable, or efficient"
+"I've tested all suggested methods plus np.array(list(map(f, x))) with perfplot (a small project of mine)."
+"Message #1: If you can use numpy's native functions, do that."
+"Notice that for pivot_table and crosstab I needed to pass list of callables.  On the other hand, groupby.agg is able to take strings for a limited number of special functions. groupby.agg would also have taken the same callables we passed to the others, but it is often more efficient to leverage the string function names as there are efficiencies to be gained."
+"re.finditer returns a generator , so you could change the [] in the above to () to get a generator instead of a list which will be more efficient if you're only iterating through the results once."
+@sparrow correctly points out the usage of converters to avoid pandas blowing up when encountering 'foobar' in a column specified as int . I would like to add that converters are really heavy and inefficient to use in pandas and should be used as a last resort
+"Basically, Python lists are very flexible and can hold completely heterogeneous, arbitrary data, and they can be appended to very efficiently, in amortized constant time .  If you need to shrink and grow your list time-efficiently and without hassle, they are the way to go.  But they use a lot more space than C arrays , in part because each item in the list requires the construction of an individual Python object, even for data that could be represented with simple C types (e.g. float or uint64_t )."
+"Whenever you see it though, it may be time to consider using a collections.deque instead of a list.  Prepending to a deque runs in constant time"
+"As a bonus, this approach does let you force Python to use your module instead of the ones installed on the system."
+( np.arange was used rather than Python's range function just in case min(x) and max(x) are floats instead of ints.)
+"Instead of manually iterating over reader() , we can just yield from it."
+"In Python 2 , use binary mode to open outfile with mode 'wb' instead of 'w' to prevent Windows newline translation.  Python 2 also has problems with Unicode and requires other workarounds to write non-ASCII text.  See the Python 2 link below and the UnicodeReader and UnicodeWriter examples at the end of the page if you have to deal with writing Unicode strings to CSVs on Python 2, or look into the 3rd party unicodecsv module:"
+Here's an example configuring a stream handler (using stdout instead of the default stderr ) and adding it to the root logger:
+"You can also use one of several alias options like 'latin' or 'cp1252' (Windows) instead of 'ISO-8859-1' (see python docs , also for numerous other encodings you may encounter)."
+"On each pull of a new batch, it proactively allocates a tuple of precisely the correct size (for all but the last batch), instead of building the tuple up element by element with amortized growth causing multiple reallocations (the way a solution calling tuple on an islice does)"
+"If you want to output to stdout instead of stderr , you just need to specify it to the StreamHandler constructor."
+"As you are in python3 , use dict.items() instead of dict.iteritems()"
+"'Sparse', 'Sparse[int]', 'Sparse[float]' is for sparse data or 'Data that has a lot of holes in it' Instead of saving the NaN or None in the dataframe it omits the objects, saving space."
+"In addition to compiling source code to bytecode, compile supports compiling abstract syntax trees (parse trees of Python code) into code objects; and source code into abstract syntax trees (the ast.parse is written in Python and just calls compile(source, filename, mode, PyCF_ONLY_AST) ); these are used for example for modifying source code on the fly, and also for dynamic code creation, as it is often easier to handle the code as a tree of nodes instead of lines of text in complex cases."
+"Your current, now-edited code sample is incorrect because you are saying urllib.urlopen(""http://www.google.com/"") instead of just urlopen(""http://www.google.com/"") ."
+NB. Python 2.7 will look for __nonzero__() instead of __bool__() .
+Returning the NotImplemented value instead of False is the right thing to do even for new-style classes if commutativity of the == and != operators is desired when the operands are of unrelated types (no inheritance).
+"Older versions of virtualenv used sys.real_prefix instead of sys.base_prefix , and sys.real_prefix did not exist outside a virtual environment"
+"When you run a script like python my_program.py , the script will run as the __main__ module instead of the my_program module"
+An answer involving ADDing the timezone info instead of removing it in python 3 is below. https://stackoverflow.com/a/25662061/93380
+"Python expects iterables so it will work with strings, lists, tuples, and generators! This is called duck typing and is one of the reasons why Python is so cool"
+"This is my personal recommendation for beginners: start by learning virtualenv and pip , tools which work with both Python 2 and 3 and in a variety of situations, and pick up other tools once you start needing them."
+If you do not have a root password (if you are not the admin) you should probably work with virtualenv .
+This is a common problem for using the set_fig*() functions due to the assumptions that they work with pixels and not inches (obviously 240000*180000 inches is too much).
+"It's good practice to form a Unicode sandwich in your code, where you decode all incoming data to Unicode strings, work with Unicodes, then encode to str s on the way out"
+"If your scenario is simple, the code provided by @juan Isaza or @scohe001 probably is enough for you to work with the case where a variable is defined at the direct previous frame and the AST node is a simple assignment"
+"Instead, use the keys() method to get a list of the keys and work with that:"
+"If your code is designed to work with Python 3.10 or newer, you want to use the PEP 604 syntax, using ... | None union syntax, and not use typing.Optional :"
+"In Python 3.9 and up, the standard container types have all been updated to support using them in type hints, see PEP 585 . But , while you now can use dict[str, int] or list[Union[int, str]] , you still may want to use the more expressive Mapping and Sequence annotations to indicate that a function won't be mutating the contents (they are treated as 'read only'), and that the functions would work with any object that works as a mapping or sequence, respectively."
+The len() function can be used with several different types in Python - both built-in types and library types
+pyvenv (not to be confused with pyenv in the previous section) is a script shipped with Python 3.3 to 3.7
+"It is an ordered container of arbitrary length that can hold a heterogenous collection of objects (their types do not matter and can be freely mixed). This should not be confused with the array module , which offers a type closer to the C array type; the contents must be homogenous (all of the same type), but the length is still dynamic."
+"'period[]' Not to be confused with a timedelta, these objects are actually anchored to specific time periods"
+"Unlike majority of the Python 2-to-3 porting guides seem to suggest , the exec statement in CPython 2 can be also used with syntax that looks exactly like the exec function invocation in Python 3"
+"Using the VIRTUAL_ENV environment variable is not reliable . It is set by the virtualenv activate shell script, but a virtualenv can be used without activation by directly running an executable from the virtualenv's bin/ (or Scripts ) directory, in which case $VIRTUAL_ENV will not be set"
+"If you want to emulate private variables for some reason, you can always use the __ prefix from PEP 8 . Python mangles the names of variables like __foo so that they're not easily visible to code outside the namespace that contains them (although you can get around it if you're determined enough, just like you can get around Java's protections if you work at it)."
+"It was intentionally done this way so that lists, tuples and other container types or iterables didn't all need to explicitly implement a public .length() method, instead you can just check the len() of anything that implements the 'magic' __len__() method."
+"If using the StringIO module to build an in-memory result, the result string will contain the translated line terminator:"
+"string.find(s, sub[, start[, end]]) Return the lowest index in s where the substring sub is found such that sub is wholly contained in s[start:end] . Return -1 on failure"
+"Some objects can't be pickled due to their very nature.  For example, it doesn't make sense to pickle a structure containing a handle to an open file."
+Here dict.fromkeys and map are used to succinctly generate a dictionary containing
+"Here string.maketrans is used to create a translation table , which is just a string containing the characters with ordinal values 0 to 255."
+"And if the list contains non-string types (such as integers, floats, bools, None) then do:"
+"To detect the encoding (assuming the file contains non-ascii characters), you can use enca (see man page ) or file -i (linux) or file -I (osx) (see man page )."
+"I like to use double quotes around strings that are used for interpolation or that are natural language messages, and single quotes for small symbol-like strings, but will break the rules if the strings contain quotes, or if I forget"
+"Reshape your data using array.reshape(1, -1) if it contains a single sample"
+"Annoy your cubicle mates every time they present you with a Python class.  Claim it could be ""better"" implemented as a dictionary plus some functions.  Embrace functional programming."
+"If you do care, wrapping things in a function as you had first indicated in your Q seems best, and while the function implementation you proposed is just fine, you could alternatively use itertools , a for...: break loop, or a genexp, or a try/except StopIteration as the function's body, as various answers suggested.  There's not much added value in any of these alternatives so I'd go for the starkly-simple version you first proposed."
+"In your case, the second test works only because Python caches small integer objects, which is an implementation detail"
+The current implementation keeps an array of integer objects for all integers between -5 and 256 . When you create an int in that range you actually just get back a reference to the existing object.
+"This is a CPython implementation detail, and not guaranteed for other Python implementations."
+"__getattribute__ is invoked before looking at the actual attributes on the object, and so can be tricky to implement correctly.  You can end up in infinite recursions very easily."
+"Using these magic methods ( __enter__ , __exit__ ) allows you to implement objects which can be used easily with the with statement."
+"Simply implement an iterator that defines a next() method, and implement an __iter__ method on a class to make it iterable. (the __iter__ of course, should return an iterator object, that is, an object that defines next() )"
+"While I don't recommend this, here's a gist that implements this feature (and notes the caveats)."
+"CPython already implements code for exception checking at every step, regardless of whether you actually use exceptions or not)."
+"To fix the non-commutativity issue of the == and != operators for Python 2 classic-style classes, the __eq__ and __ne__ methods should return the NotImplemented value when an operand type is not supported"
+they do not implement the operation for the operands provided. (The
+It's difficult to make del df.column_name work simply as the result of syntactic limitations in Python. del df[name] gets translated to df.__delitem__(name) under the covers by Python.
+"Note that it is possible to bypass the autodetect, pandas.set_printoptions(max_rows=200, max_columns=10) will never switch to summary view if number of rows, columns does not exceed the given limits."
+"You may want to use a custom iterator, rather than a generator, when you need a class with somewhat complex state-maintaining behavior, or want to expose other methods besides __next__ (and __iter__ and __init__ ).  Most often, a generator (sometimes, for sufficiently simple needs, a generator expression ) is sufficient, and it's simpler to code because state maintenance (within reasonable limits) is basically ""done for you"" by the frame getting suspended and resumed."
+The plt.plot (or ax.plot ) function will automatically set default x and y limits
+"If you wish to keep those limits, and just change the stepsize of the tick marks, then you could use ax.get_xlim() to discover what limits Matplotlib has already set."
+"but doing so is dangerous -- the standard limit is a little conservative, but Python stackframes can be quite big."
+"Get current axis via plt.gca() , and then set its limits:"
+"This will not recognize floats, negative integers, or integers in hexadecimal format.  If you can't accept these limitations, jmnas's answer below will do the trick."
+"Note that portable programs are limited to exit status codes in the range 0-255, if you raise SystemExit(256) on many systems this will get truncated and your process will actually exit with status 0."
+"'single' is a limited form of 'exec' which accepts a source code containing a single statement (or multiple statements separated by ; ) if the last statement is an expression statement, the resulting bytecode also prints the repr of the value of that expression to the standard output(!) . An if - elif - else chain, a loop with else , and try with its except , else and finally blocks is considered a single statement"
+"'single' is a limited form of 'exec' which accepts a source code containing a single statement (or multiple statements separated by ; ) if the last statement is an expression statement, the resulting bytecode also prints the repr of the value of that expression to the standard output(!) ."
+"You'll also notice that subprocess.call() has many of the same limitations as os.system() . In regular use, you should generally check whether the process finished successfully, which subprocess.check_call() and subprocess.check_output() do (where the latter also returns the standard output of the finished subprocess). Similarly, you should usually use check=True with subprocess.run() unless you specifically need to allow the subprocess to return an error status."
+"For example, if a Linux shell's locale is en_GB.UTF-8 , the output will be encoded to UTF-8 . On Windows, you will be limited to an 8bit code page."
+Caveat - Please read the API documentation for this function before you use to understand the limitations and how to get best results.
+"Its interpretation is purely up to whatever implements the __getitem__ function and sees Ellipsis objects there, but its main (and intended) use is in the numpy third-party library, which adds a multidimensional array type.  Since there are more than one dimensions, slicing becomes more complex than just a start and stop index; it is useful to be able to slice in multiple dimensions as well"
+"Then, generators were introduced to the language in general, and that method was reimplemented as an iterator-generator method named iteritems() . The original remains for backwards compatibility."
+"As of Python 3.6 , for the CPython implementation of Python, dictionaries remember the order of items inserted . This is considered an implementation detail in Python 3.6 ; you need to use OrderedDict if you want insertion ordering that's guaranteed across other implementations of Python (and other ordered behavior [1] )."
+"As of Python 3.7 , this is a guaranteed language feature, not merely an implementation detail"
+This simply means that you can depend on it . Other implementations of Python must also offer an insertion ordered dictionary if they wish to be a conforming implementation of Python 3.7.
+How does the Python 3.6 dictionary implementation perform better [2] than the older one while preserving element order?
+"In the previous implementation, a sparse array of type PyDictKeyEntry and size dk_size had to be allocated; unfortunately, it also resulted in a lot of empty space since that array was not allowed to be more than 2/3 * dk_size full for performance reasons . (and the empty space still had PyDictKeyEntry size!)."
+It's only in the cPython implementation as far as I know
+"Because, let's face it, if all yield from does is expand the for loop, then it does not warrant adding yield from to the language and preclude a whole bunch of new features from being implemented in Python 2.x."
+"Python (or rather, the CPython implementation) doesn't optimize tail recursion, and unbridled recursion causes stack overflows"
+turns off the brakes or is it my implementation? (The latter is quite
+"The implementation of batched , like all itertools functions to date, is at the C layer, so it's capable of optimizations Python level code cannot match, e.g."
+"People call it CPython to distinguish it from other, later, Python implementations, and to distinguish the implementation of the language engine from the Python programming language itself."
+"CPython happens to be implemented in C. That is just an implementation detail, really"
+"virtualenvwrapper is a set of extensions to virtualenv (see docs ). It gives you commands like mkvirtualenv , lssitepackages , and especially workon for switching between different virtualenv directories"
+"Unlike most manual string-splitting attempts, os.path.splitext will correctly treat /a/b.c/d as having no extension instead of having extension .c/d , and it will treat .bashrc as having no extension instead of having extension .bashrc :"
+"When using matplotlib.pyplot.savefig , the file format can be specified by the extension:"
+"For Python versions < 3.11, if you have typing_extensions installed, you can use:"
+The .py extension should be removed from moduleName . The function also defines a package argument for relative imports.
+"You can use the __import__ function, which takes the module name (without extension) as a string extension"
+"If you look in there you will find a bunch of files sharing the names of the .py files in your project's folder, only their extensions will be either .pyc or .pyo . These are bytecode-compiled and optimized bytecode-compiled versions of your program's files, respectively."
+"Binary packages are now distributed as wheels ( .whl files)—not just on PyPI, but in third-party repositories like Christoph Gohlke's Extension Packages for Windows . pip can handle wheels; easy_install cannot."
+"PyPy, as others have been quick to mention, has tenuous support for C extensions"
+"If you decide you really need to enforce the license check securely, write it as a small C extension so that the license check code can be extra-hard (but not impossible!) to reverse engineer, and leave the bulk of your code in Python."
+"Modern CPUs provide a lot of low-level instructions, besides the usual arithmetic and logic, known as extensions, e.g"
+Advanced Vector Extensions ( AVX ) are extensions to the x86 instruction
+"Because tensorflow default distribution is built without CPU extensions , such as SSE4.1, SSE4.2, AVX, AVX2, FMA, etc"
+"Another argument is that even with these extensions CPU is a lot slower than a GPU, and it's expected for medium- and large-scale machine-learning training to be performed on a GPU."
+"There is a project that does translate Python-ish code to C, and that is called Cython . Cython adds a few extensions to the Python language, and lets you compile your code to C extensions, code that plugs into the CPython interpreter."
+scikit-build is an improved build system generator that internally uses CMake to build compiled Python extensions
+I found this solution to be good.  (This uses the python-dateutil extension )
+"First of all, the .json attribute is a property that delegates to the request.get_json() method , which documents why you see None here."
+"The __init__ method is roughly what represents a constructor in Python.  When you call A() Python creates an object for you, and passes it as the first parameter to the __init__ method.  Any additional parameters (e.g., A(24, 'Hello') ) will also get passed as arguments--in this case causing an exception to be raised, since the constructor isn't expecting them."
+The * operator simply unpacks the tuple (or any iterable) and passes them as the positional arguments to the function
+"Redirection allows you to read from a file as your standard input, and write your standard output to a file. grep 'foo' <inputfile >outputfile opens outputfile for writing and inputfile for reading, and passes its contents as standard input to grep , whose standard output then lands in outputfile . This is not generally hard to replace with native Python code."
+"Whenever you use a for loop, or map , or a list comprehension, etc. in Python, the next method is called automatically to get each item from the iterator , thus going through the process of iteration ."
+"for example, open(""file.txt"") returns a file object (and opens the file), iterating over it iterates over lines in that file"
+Iteration is a process implying iterables (implementing the __iter__() method) and iterators (implementing the __next__() method).
+"The Python 3 range() object doesn't produce numbers immediately; it is a smart sequence object that produces numbers on demand . All it contains is your start, stop and step values, then as you iterate over the object the next integer is calculated each iteration."
+"Why assign seen.add to seen_add instead of just calling seen.add ? Python is a dynamic language, and resolving seen.add each iteration is more costly than resolving a local variable. seen.add could have changed between iterations, and the runtime isn't smart enough to rule that out"
+which will return the first match or raise a StopIteration if none is found
+"In contrast, a list comprehension reevaluates the element expression on every iteration. [[1] * 4 for n in range(3)] reevaluates [1] * 4 every time for the same reason [x**2 for x in range(3)] reevaluates x**2 every time"
+The wrapper needs to accept the data that is sent to it (obviously) and should also handle the StopIteration when the for loop is exhausted
+list builds a new list using items obtained by iterating over the input iterable . A string is an iterable -- iterating over it yields a single character at each iteration step.
+"The __next__() method returns the next value and is implicitly called at each loop increment.  This method raises a StopIteration exception when there are no more value to return, which is implicitly captured by looping constructs to stop iterating."
+If you want StopIteration to be raised if no matching element is found:
+"The .next() method of iterators immediately raises StopIteration if the iterator immediately finishes -- i.e., for your use case, if no item in the iterable satisfies the condition.  If you don't care (i.e., you know there must be at least one satisfactory item) then just use .next() (best on a genexp, line for the next built-in in Python 2.6 and better)."
+"Comparisons to singletons like None should always be done with is or is not , never the equality operators ."
+"Not always.  NaN is a counterexample.  But usually , identity ( is ) implies equality ( == ).  The converse is not true: Two distinct objects can have the same value."
+"When comparing ints (or immutable types in general), you pretty much always want the former.  There's an optimization that allows small integers to be compared with is , but don't rely on it."
+"For boolean values, you shouldn't be doing comparisons at all.   Instead of:"
+"For comparing against None , is None is preferred over == None ."
+"Practically-speaking, there is not much difference since custom comparison operators are rare.  But you should use is None as a general rule."
+"So, Python by default uses the object identifiers for comparison operations:"
+"Globbing aka wildcard expansion can be replaced with glob.glob() or very often with simple Python string comparisons like for file in os.listdir('.'): if not file.endswith('.png'): continue .  Bash has various other expansion facilities like .{png,jpg} brace expansion and {1..100} as well as tilde expansion ( ~ expands to your home directory, and more generally ~account to the home directory of another user)"
+"The same class decorator can also generate comparison methods ( __lt__ , __gt__ , etc.) and handle immutability."
+"this solution can have a strange behavior in a particular case: if either A or B is empty  and the other one contains a single element, then it return True . For some reason, the comparison A==B returns an empty array, for which the all operator returns True ."
+It's because __lt__() and related comparison methods are quite commonly used indirectly in list sorts and such
+"Use != . See comparison operators . For comparing object identities, you can use the keyword is and its negation is not ."
+"Specify row level, column levels, values to be aggregated, and function(s) to perform aggregations."
+"pd.DataFrame.groupby + pd.DataFrame.unstack Good general approach for doing just about any type of pivot You specify all columns that will constitute the pivoted row levels and column levels in one group by.  You follow that by selecting the remaining columns you want to aggregate and the function(s) you want to perform the aggregation.  Finally, you unstack the levels that you want to be in the column index."
+"You specify all columns that will constitute the pivoted row levels and column levels in one group by.  You follow that by selecting the remaining columns you want to aggregate and the function(s) you want to perform the aggregation.  Finally, you unstack the levels that you want to be in the column index."
+If you mean to do aggregation you can use the aggregation features of the ORM :
+"Django documentation: Aggregation , and in particular the section entitled Interaction with default ordering or order_by()"
+"If you want a generic Python solution for serializing datetime to json, check out @jjmontes' answer for a quick solution which requires no dependencies."
+"Thus, annotating your function as def __add__(self, other: Position) -> Position: no longer requires Position to already exist:"
+"Inertia . Moving to PyPy often requires retooling, which for some people and organizations is simply too much work."
+This requires a fairly intricate understanding of all the moving parts and should not be undertaken lightly.  The simpler Popen object represents the (possibly still-running) process which needs to be managed from your code for the remainder of the lifetime of the subprocess.
+"If you want to use dataclasses module in Python versions < 3.7, then you could install the backported module (requires 3.6) or use the attrs project mentioned above."
+"I have a suspicion that this is related to the parser that BS will use to read the HTML.  They document is here , but if you're like me (on OSX) you might be stuck with something that requires a bit of work:"
+"It is possible to extract .gz (and maybe other formats) compressed data on the fly, but such an operation probably requires the HTTP server to support random access to the file."
+"In Python 3: inherit from object if you are writing code that tries to be Python agnostic, that is, it needs to work both in Python 2 and in Python 3"
+"For Python 3 users, one needs to use the .items() instead of .iteritems() :"
+Make one virtual environment and install the libraries that your project needs side by side in that virtual environment.)
+"If you know you don’t need to use your system long-term (e.g. because you’re working in a container or CI environment like Docker or GitHub Actions), and you're still sure that you want to install packages ""system-wide"" and risk breaking your system (for example, by overwriting libraries that were part of tools written in Python that came with your system), Pip needs to be given permission to do so."
+"If the database will be hit for all querysets anyway (e.g. because the result needs to be sorted), this won't add further cost."
+What if our writer needs to handle exceptions? Let's say the writer handles a SpamException and it prints *** if it encounters one.
+"It only needs to look up the .__next__ function of the underlying iterator once per batch, not n times per batch (the way a zip_longest((iter(iterable),) * n) -based approach does)"
+* - to_numpy() is my recommended method for any production code that needs to run reliably for many versions into the future
+"Update: In Python 2.6 and onwards, consider whether the namedtuple data structure suits your needs:"
+"str(x) converts any object x to a string by calling x. __str__() , or repr(x) if x doesn't have a __str__() method."
+"If it is a string, you must also give the encoding (and optionally, errors) parameters; bytearray() then converts the string to bytes using str.encode()."
+"json.dumps() converts a dictionary to str object, not a json(dict) object! So you have to load your str into a dict to use it by using json.loads() method"
+"When importing a file, Python only searches the directory that the entry-point script is running from and sys.path which includes locations such as the package installation directory (it's actually a little more complex than this, but this covers most cases)."
+"Python includes a profiler called cProfile . It not only gives the total running time, but also times each function separately, and tells you how many times each function was called, making it easy to determine where you should make optimizations."
+Version 1.0 and above includes a method convert_dtypes() to convert Series and DataFrame columns to the best possible dtype that supports the pd.NA missing value.
+The Descriptor Howto includes a pure Python sample implementation of the property() type:
+"At compile time, if the definition of an object includes annotations, the Python compiler will write the expressions computing the annotations into its own function"
+"In Python 3.4 and above, you can use the object oriented pathlib module interface which includes wrappers for much of the os module.  Here is an example of getting the file stats."
+"Usually, a Python dictionary throws a KeyError if you try to get an item with a key that is not currently in the dictionary.  The defaultdict in contrast will simply create any items that you try to access (provided of course they do not exist yet).  To create such a ""default"" item, it calls the function object that you pass to the constructor (more precisely, it's an arbitrary ""callable"" object, which includes function and type objects).  For the first example, default items are created using int() , which will return the integer object 0 .  For the second example, default items are created using list() , which returns a new empty list object."
+"This is a MutableSet, so the signature for .union doesn't match that of set, but since it includes __or__ something similar can easily be added:"
+"However, it's almost impossible to use multiple-inheritance without super() . This includes common idioms like mixins, interfaces, abstract classes, etc"
+"So even objects you may not consider to be lists of elements could still be length-checked.  This includes strings, queues, trees, etc."
+The SavedModel format on the other hand includes a serialized description of the computation defined by the model in addition to the parameter values (checkpoint). Models in this format are independent of the source code that created the model
+"By defining conftest.py in your root path, you will have pytest recognizing your application modules without specifying PYTHONPATH . In the background, py.test modifies your sys.path by including all submodules which are found from the root path."
+"This modifies your original list (i.e. sorts in-place). To get a sorted copy of the list, without changing the original, use the sorted() function:"
+"When you create an object by calling the class, Python creates a new class (when it executes the 'class' statement) by calling the metaclass"
+"When the class statement is executed, Python first executes the body of the class statement as a normal block of code"
+"Normally, each call to run , check_output , or the Popen constructor executes a single program . That means no fancy bash-style pipes"
+prefetch_related on the other hand executes another query and therefore reduces the redundant columns in the original object ( ModelA in the above example)
+entry in sys.modules and then executes the code in the module
+"You can also create a directory or zipfile full of code, and include a __main__.py .  Then you can simply name the directory or zipfile on the command line, and it executes the __main__.py automatically:"
+"Yes, it acts like the finally block after a try block, i.e. it always executes (unless the python process terminates in an unusual way of course)."
+"__double_leading_underscore : when naming a class attribute, invokes name mangling (inside class FooBar, __boo becomes _FooBar__boo ; see below)."
+"With this, python command now invokes python3 . If you want to invoke the ""original"" python (that refers to python2 ) on occasion, you can use command python , which will leaving the alias untouched, and works in all shells."
+"So invoking the shell invokes a program of the user's choosing and is platform-dependent.  Generally speaking, avoid invocations via the shell."
+"Explanation: the methods based on + (including the implied use in sum ) are, of necessity, O(L**2) when there are L sublists -- as the intermediate result list keeps getting longer, at each step a new intermediate result list object gets allocated, and all the items in the previous intermediate result must be copied over (as well as a few new ones added at the end). So, for simplicity and without actual loss of generality, say you have L sublists of M items each: the first M items are copied back and forth L-1 times, the second M items L-2 times, and so on; total number of copies is M times the sum of x for x from 1 to L excluded, i.e., M * (L**2)/2 ."
+"So some_list[-1] gets the last element, some_list[-2] gets the second to last, etc, all the way down to some_list[-len(some_list)] , which gives you the first element."
+"The virtualenv directory typically gets placed in ~/.local/share/virtualenvs/XXX , with XXX being a hash of the path of the project directory"
+"Whether running scripts inside a package is an antipattern or not is subjective, but personally I find it really useful in a package I have which contains some custom wxPython widgets, so I can run the script for any of the source files to display a wx.Frame containing only that widget for testing purposes."
+"Global site-packages ("" dist-packages "") directories are listed in sys.path when you run: python -m site For a more concise list run getsitepackages from the site module in Python code: python -c 'import site; print(site.getsitepackages())' Caution: In virtual environments getsitepackages is not available with older versions of virtualenv , sys.path from above will list the virtualenv's site-packages directory correctly, though"
+For a more concise list run getsitepackages from the site module in Python code:
+"Caution: In virtual environments getsitepackages is not available with older versions of virtualenv , sys.path from above will list the virtualenv's site-packages directory correctly, though"
+"To verify this, using the Anaconda distribution of Python 2.7 on Ubuntu Linux, with guppy.hpy (aka heapy) and sys.getsizeof , the size of a class instance without __slots__ declared, and nothing else, is 64 bytes"
+See recursive sizeof recipe for an example of using getsizeof() recursively to find the size of containers and all their contents.
+If you are in python < 2.6 and don't have sys.getsizeof you can use this extensive module instead
+"The __str__ method is what gets called happens when you print it, and the __repr__ method is what happens when you use the repr() function (or when you look at it with the interactive prompt)."
+"If the function is from a source file available on the filesystem, then inspect.getsource(foo) might be of help:"
+"After a quick glance at the actual Python 2.5 library code, I see that Python internally compiles AND CACHES regexes whenever you use them anyway (including calls to re.match() ), so you're really only changing WHEN the regex gets compiled, and shouldn't be saving much time at all - only the time it takes to check the cache (a key lookup on an internal dict type)."
+"I see most answers resolutely ignore the next built-in and so I assume that for some mysterious reason they're 100% focused on versions 2.5 and older -- without mentioning the Python-version issue (but then I don't see that mention in the answers that do mention the next built-in, which is why I thought it necessary to provide an answer myself -- at least the ""correct version"" issue gets on record this way;-)."
+select_related does an SQL join and therefore gets the results back as part of the table from the SQL server
+"Is this a lambda returning (y, [1,2,3]) (thus map only gets one parameter, resulting in an error)? Or does it return y ? Or is it a syntax error, because the comma on the new line is misplaced? How would Python know what you want?"
+"Obviously, this gets very tedious especially for large ranges of x and y . Instead, meshgrid can actually generate this for us: all we have to specify are the unique x and y values."
+"to make room for the label, where plt.gcf() means get the current figure . plt.gca() , which gets the current Axes , can also be used."
+In the second line of code the file result.json gets created and opened as the variable fp .
+In the third line your dict sample gets written into the result.json !
+"reshape((-1,)) gets a view whenever the strides of the array allow it even if that means you don't always get a contiguous array."
+"Such a Callable takes any number and type of arguments ( ... ) and returns a value of any type ( Any ). If this is too unconstrained, one may also specify the types of the input argument list and return type."
+"There is also threading which runs multiple tasks in a single process (which is more lightweight and gives you more control, but also more constrained in that threads within a process are tightly coupled, and bound to a single GIL .)"
+"A name in Python can perfectly well refer to different objects at different times (as in most programming languages, though not all) -- and there is no constraint on the name such that, if it has once referred to an object of type X, it's then forevermore constrained to refer only to other objects of type X.  Constraints on names are not part of the concept of ""strong typing"", though some enthusiasts of static typing (where names do get constrained, and in a static, AKA compile-time, fashion, too) do misuse the term this way."
+"Or a non-virtualenv Python binary can be executed directly while a virtualenv is activated in the shell, in which case $VIRTUAL_ENV may be set in a Python process that is not actually running in that virtualenv."
+"I don't really see the need, as a module with functions (and not a class) would serve well as a singleton"
+"If you do wish to use a class, there is no way of creating private classes or private constructors in Python, so you can't protect against multiple instantiations, other than just via convention in use of your API. I would still just put methods in a module, and consider the module as the singleton."
+Also don't use str as variable name or you'll shadow the built-in str() .
+"In Python 3.2+, using the APIs requested by the OP, you can elegantly do the following:"
+"With the Pathlib module (introduced in Python 3.4), there is an alternate syntax (thanks David258):"
+"The reason to add the try-except block is to handle the case when the directory was created between the os.path.exists and the os.makedirs calls, so that to protect us from race conditions."
+"Only move them into a function if your profiling shows that would help (you did profile to see where best to improve performance, right??)"
+"Try using the key keyword argument of sorted() , which sorts in increasing order by default:"
+"key should be a function that identifies how to retrieve the comparable element from your data structure.  In your case, it is the second element of the tuple, so we access [1] ."
+"For optimization, see jamylak's response using operator.itemgetter(1) , which is essentially a faster version of lambda x: x[1] ."
+For variable positional arguments ( *args ) and variable keyword arguments ( **kw ) you only need to specify the expected value for one such argument.
+From the Arbitrary argument lists and default argument values section of the Type Hints PEP:
+"is acceptable and it means that, e.g., all of the following represent function calls with valid types of arguments:"
+Looks like this is new as of Python 3.4 - pathlib .
+"If the file already exists, the function succeeds if exist_ok is true (and its modification time is updated to the current time), otherwise FileExistsError is raised."
+For more information on slicing see this Stack Overflow answer .
+"If you are just looking to flip a switch by setting a variable True or False , have a look here (specifically store_true and store_false)"
+sys.path might include items that aren't specifically in your PYTHONPATH environment variable
+The CPython implementation currently has a global interpreter lock (GIL) that prevents threads of the same interpreter from concurrently executing Python code
+"This means CPython threads are useful for concurrent I/O-bound workloads, but usually not for CPU-bound workloads"
+"The naming calc_stuff() indicates that your workload is CPU-bound, so you want to use multiple processes here (which is often the better solution for CPU-bound workloads anyway, regardless of the GIL)."
+There are two easy ways of creating a process pool into the Python standard library
+The second way to create a process pool is concurrent.futures.ProcessPoolExecutor :
+"If you want to know the original reason, you'll have to either wade through old Python mailing lists or ask somebody who was there (eg"
+"Simple increment and decrement aren't needed as much as in other languages.  You don't write things like for(int i = 0; i < 10; ++i) in Python very often; instead you do things like for i in range(0, 10) ."
+"It's not a decision of whether it makes sense, or whether it can be done--it does, and it can.  It's a question of whether the benefit is worth adding to the core syntax of the language.  Remember, this is four operators--postinc, postdec, preinc, predec, and each of these would need to have its own class overloads; they all need to be specified, and tested; it would add opcodes to the language (implying a larger, and therefore slower, VM engine); every class that supports a logical increment would need to implement them (on top of += and -= )."
+"There are dictionary comprehensions in Python 2.7+ , but they don't work quite the way you're trying.  Like a list comprehension, they create a new dictionary; you can't use them to add keys to an existing dictionary.  Also, you have to specify the keys and values, although of course you can specify a dummy value if you like."
+"What you seem to be asking for is a way to set multiple keys at once on an existing dictionary.  There's no direct shortcut for that.  You can either loop like you already showed, or you could use a dictionary comprehension to create a new dict with the new values, and then do oldDict.update(newDict) to merge the new values into the old dict."
+In Python 3.x and 2.x you can use use list to force a copy of the keys to be made:
+In Python 2.x calling .keys made a copy of the keys that you could iterate over while modifying the dict :
+"but on Python 3.x, .keys returns a view object instead, so it won't fix your error."
+Which one depends on what OS and software you have and use.
+Use sys.executable to ensure that you will call the same pip associated with the current runtime.
+"The psutil library gives you information about CPU, RAM, etc., on a variety of platforms:"
+"psutil is a module providing an interface for retrieving information on running processes and system utilization (CPU, memory) in a portable way by using Python, implementing many functionalities offered by tools like ps, top  and Windows task manager."
+"It currently supports Linux, Windows, OSX, Sun Solaris, FreeBSD, OpenBSD and NetBSD, both 32-bit and 64-bit architectures, with Python versions from 2.6 to 3.5 (users of Python 2.4 and 2.5 may use 2.1.3 version)."
+"You use the built-in int() function, and pass it the base of the input number, i.e. 2 for a binary number:"
+Sort isn't in place by default! So you should assign result of the sort method to a variable or add inplace=True to method call.

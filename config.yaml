@@ -1,0 +1,73 @@
+"API_key_list":
+  - "sk-"
+  - "sk-"
+  - "sk-"
+  - "sk-"
+
+"seed_file_path" : "../seed_data/"
+"all_file_path" : "../all_data/"
+"ke_entity_extraction_prompt" : "../prompt/kg_exploration/entity_extraction"
+"ke_entity_extraction_examples" : "../prompt/kg_exploration/entity_extraction_examples.json"
+"ke_relation_extraction_prompt" : "../prompt/kg_exploration/relation_extraction"
+"ke_relation_extraction_examples" : "../prompt/kg_exploration/relation_extraction_examples.json"
+"ke_entity_labeling_prompt" : "../prompt/kg_exploration/entity_type_label"
+"ke_entity_labeling_examples" : "../prompt/kg_exploration/entity_type_label_examples.json"
+"ke_entity_type_fusion_prompt" : "../prompt/kg_exploration/entity_type_fusion"
+"ke_entity_type_fusion_examples" : "../prompt/kg_exploration/entity_type_fusion_examples.json"
+"ke_relation_type_fusion_prompt" : "../prompt/kg_exploration/relation_type_fusion"
+"ke_relation_type_fusion_examples" : "../prompt/kg_exploration/relation_type_fusion_examples.json"
+"kc_entity_extraction_prompt" : "../prompt/kg_construction/entity_extraction"
+"kc_entity_extraction_examples" : "../prompt/kg_construction/entity_examples.json"
+"kc_relation_extraction_prompt" : "../prompt/kg_construction/relation_extraction"
+"kc_relation_extraction_examples" : "../prompt/kg_construction/relation_examples.json"
+"save_ke_entity_path" : "../output/kg_exploration/entity.csv"
+"save_ke_relation_path" : "../output/kg_exploration/relation.csv"
+"save_ke_entity_label_path" : "../output/kg_exploration/entity_label.csv"
+"save_ke_entity_type_path" : "../output/kg_exploration/entity_type.csv"
+"save_ke_relation_type_path" : "../output/kg_exploration/relation_type.csv"
+"save_kc_entity_path" : "../output/kg_construction/entity.csv"
+"save_kc_relation_path" : "../output/kg_construction/relation.csv"
+"save_kr_initial_schema_path" : "../output/kg_filtering/initial_schema.csv"
+"save_kr_refine_schema_path" : "../output/kg_filtering/refine_schema.csv"
+"save_kr_refine_kg_path" : "../output/kg_filtering/refine_kg.csv"
+
+"llm_name": "gpt-4o-2024-11-20"
+#"llm_name": "deepseek-chat"
+
+predefined_support: 0.0035
+predefined_confidence: 0.03
+predefined_lift: 1.0
+
+
+# ============================================================
+# Knowledge Graph Import Configuration
+# ============================================================
+
+# Neo4j connection
+neo4j_uri:      "bolt://localhost:%%%" #need to be completed
+neo4j_user:     "neo4j"
+neo4j_password: "%%%" #need to be completed
+neo4j_db:       "%%%" #need to be completed
+
+# Input files
+entity_type_file:   "./kg_construction/entity_type.csv"
+relation_type_file: "./kg_construction/relation_type.csv"
+triple_file:        "./kg_filtering/verified_kg.csv"
+
+
+# ============================================================
+# KG+LLM Evaluation Configuration
+# ============================================================
+
+# OpenAI / LLM settings
+api_key:    "sk-"
+model_name: "gpt-4o"
+
+
+# Input / output files
+ground_truth_path: "./support4apirecom/Ground_truth.csv"
+output_path:       "./support4apirecom/auto_kg_llm_results.csv"
+
+# Evaluation settings
+top_k_triples: 5
+max_retrieve:  50

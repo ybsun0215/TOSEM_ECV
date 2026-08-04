@@ -1,0 +1,77 @@
+[
+  {
+    "text": "If you need to read and write the date and time to a database, use the java.sql.Date and java.sql.Timestamp classes.",
+    "entity_pairs": "(java.sql.Date, java.sql.Timestamp)",
+    "relation_types": {
+      "Dependency": "One entity relies on another entity for its functionality or execution.",
+      "Conversion": "One entity is transformed into another entity or format.",
+      "Preference": "One entity is favored over another entity in terms of usage or efficiency.",
+      "Implementation": "One entity is realized or executed by another entity.",
+      "Collaboration": "One entity communicates or works with another entity.",
+      "Containment": "One entity includes or holds another entity within it.",
+      "Modification": "One entity alters or changes another entity.",
+      "Creation": "One entity generates or produces another entity.",
+      "Difference": "One entity is considered different to another entity.",
+      "Replacement": "One entity is substituted or exchanged for another entity.",
+      "Limitation": "One entity imposes restrictions or constraints on another entity.",
+      "Equivalence": "One entity is considered equal or similar to another entity."
+    },
+    "output": "### relation triples with relation types ###\nCollaboration: (java.sql.Date, works with, java.sql.Timestamp)"
+  },
+  {
+    "text": "Instead of run() it could be let() or apply() or anything naturally you have surrounding the forEach that is a place you want to break from",
+    "entity_pairs": "(run(), let()); (run(), apply()); (let(), apply())",
+    "relation_types": {
+      "Dependency": "One entity relies on another entity for its functionality, operation, or execution.",
+      "Conversion": "One entity is transformed into another format, type, or representation.",
+      "Preference": "One entity is favored or chosen over another entity based on specific criteria.",
+      "Collaboration": "Two entities work or interact together to achieve a shared goal or perform complementary roles.",
+      "Implementation": "One entity is created or executed to fulfill the specifications of another entity.",
+      "Containment": "One entity is a part of or is included within another entity.",
+      "Limitation": "One entity imposes restrictions or defines boundaries on the use or behavior of another entity.",
+      "Difference": "One entity is compared to another entity, highlighting distinctions in behavior, functionality, or conditions.",
+      "Replacement": "One entity substitutes another entity, offering an improved alternative or serving as a successor.",
+      "Modification": "One entity alters or modifies another entity.",
+      "Equivalence": "One entity has similar behavior, functionality, or purpose to another entity.",
+      "Extension": "One API entity adds new functionality or behavior to another existing API entity.",
+      "Delegation": "One API entity transfers part or all of its responsibilities to another API entity."
+    },
+    "output": "### relation triples with relation types ###\nReplacement: (run(), replaced by, let())\nReplacement: (run(), replaced by, apply())"
+  },
+  {
+    "text": "A thread that calls wait() on any object becomes inactive until another thread calls notify() on that object.",
+    "entity_pairs": "(wait(), notify())",
+    "relation_types": {
+      "Dependency": "One entity relies on another entity for its functionality or execution.",
+      "Conversion": "One entity is transformed into another entity or format.",
+      "Preference": "One entity is favored over another entity in terms of usage or efficiency.",
+      "Implementation": "One entity is realized or executed by another entity.",
+      "Collaboration": "One entity communicates or works with another entity.",
+      "Containment": "One entity includes or holds another entity within it.",
+      "Modification": "One entity alters or changes another entity.",
+      "Creation": "One entity generates or produces another entity.",
+      "Difference": "One entity is considered different to another entity.",
+      "Replacement": "One entity is substituted or exchanged for another entity.",
+      "Limitation": "One entity imposes restrictions or constraints on another entity.",
+      "Equivalence": "One entity is considered equal or similar to another entity."
+    },
+    "output": "### relation triples with relation types ###\nDependency: (wait(), call order, notify())"
+  },
+  {
+    "text": "When converting a string to and from a []byte or a []rune, Go does O(n) work even though conversions are \"syntax\".",
+    "entity_pairs": "(string, []byte); (string, []rune); ([]byte, []rune)",
+    "relation_types": {
+      "Dependency": "One entity relies on another entity for its functionality, operation, or execution.",
+      "Conversion": "One entity is transformed into another format, type, or representation.",
+      "Collaboration": "Two entities work or interact together to achieve a shared goal or perform complementary roles.",
+      "Containment": "One entity is a part of or is included within another entity.",
+      "Limitation": "One entity imposes restrictions or defines boundaries on the use or behavior of another entity.",
+      "Difference": "One entity is compared to another entity, highlighting distinctions in behavior, functionality, or conditions.",
+      "Replacement": "One entity substitutes another entity, offering an improved alternative or serving as a successor.",
+      "Equivalence": "One entity has similar behavior, functionality, or purpose to another entity.",
+      "Satisfaction": "One entity implicitly fulfills the contract of another entity by implementing all required methods.",
+      "Embedding": "One entity incorporates another entity's fields and methods directly into its own structure."
+    },
+    "output": "### relation triples with relation types ###\nConversion: (string, convert into, []byte)\nConversion: (string, convert into, []rune)"
+  }
+]

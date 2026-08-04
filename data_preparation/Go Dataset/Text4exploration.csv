@@ -1,0 +1,416 @@
+﻿"sync.RWMutex embeds sync.Mutex, so it inherits Lock and Unlock without extra code."
+"Inside bufio.ReadWriter, the struct anonymously includes both bufio.Reader and bufio.Writer."
+"The server struct net/http.Server contains an embedded http.Handler field, enabling direct routing."
+log/slog.Logger builds on slog.Handler through embedding to reuse formatting logic.
+"A testing.T value silently embeds testing.common, sharing helper methods."
+"In crypto/tls, tls.Conn composes with net.Conn by embedding, rather than by inheritance."
+The sql.Tx struct pulls in sql.Conn via embedding to reuse connection primitives.
+"exec.Cmd features an embedded os.Process, exposing low-level PID control."
+context.timerCtx extends context.cancelCtx by embedding it anonymously.
+The type time.Timer wraps time.runtimeTimer as an embedded field.
+Experimental struct net/netip.Addr integrates netip.addrInternal through embedding.
+archive/zip.Writer incorporates io.Closer anonymously to satisfy cleanup needs.
+"os/exec.Error absorbs *os.PathError through embedding, preserving original details."
+"json.RawMessage embeds []byte, turning a slice into a distinct nominal type."
+"In database/sql, Rows leans on an embedded io.Closer to present a unified API."
+The helper bytes.Reader adopts io.ReaderAt via embedding to gain random-access reads.
+crypto/rand.Reader borrows the behavior of io.Reader by embedding it.
+Internal struct time.ticker inherits time.runtimeTimer functionality by embedding.
+Custom library example.com/cache.LRU embeds sync.Mutex for thread-safe mutations.
+The scaffolding type cmd/internal/objabi.Path contains string as an embedded field for fast conversions.
+*os.File implements io.Reader.
+bytes.Buffer fulfills io.Writer out of the box.
+A *bytes.Buffer value also conforms to fmt.Stringer.
+strings.Reader satisfies io.ReadSeeker without any explicit declaration.
+The concrete type time.Time meets the contract of encoding.TextMarshaler.
+Pointer receiver *http.Client qualifies as http.RoundTripper.
+"net.ListenConfig plays the role of context.ContextAware, thanks to its DialContext method."
+crypto/tls.Conn aligns with net.Conn through matching methods.
+*bufio.Reader adheres to io.ByteScanner.
+The alias type MyError = error trivially satisfies error.
+flag.Getter implements encoding.TextUnmarshaler.
+image.RGBA lives up to image.Image.
+math/big.Int seamlessly slots into encoding.BinaryMarshaler.
+A *sync.Cond is capable of acting as sync.Locker via its embedded Locker.
+sql.NullString conforms to database/sql/driver.Valuer.
+embed.FS meets fs.FS requirements.
+The zero-cost wrapper netip.Addr works as fmt.Formatter.
+path/error鈥檚 os.PathError fulfills the error interface.
+A gzip.Writer qualifies for io.Closer.
+"testing.TB is an interface, and *testing.T satisfies it implicitly."
+(*sync.Mutex).Lock belongs to the pointer method set of sync.Mutex.
+"Conversely, sync.Mutex.String is not available鈥攏o value method with that name exists."
+time.Time.Add resides in the value method set of time.Time.
+"(*bytes.Buffer).WriteString sits inside the pointer receiver set, so a value needs address-of to call it."
+(*net/http.Server).Serve is exposed on *http.Server only.
+(*os.File).Close forms part of *os.File鈥檚 pointer method ensemble.
+The helper (*flag.FlagSet).Visit is listed in the pointer set of flag.FlagSet.
+"A value of bytes.Reader can call bytes.Reader.Len, because Len lives in the value method set."
+"(*testing.T).Fatal belongs to the pointer, but not the zero value of testing.T copied by value."
+"(*context.cancelCtx).Done is present in *context.cancelCtx, inherited via embedding."
+(*sql.DB).PingContext falls within the pointer set of sql.DB.
+bytes.Buffer.Reset exists on values because it resides in both method sets (pointer promotes).
+(*image.RGBA).PixOffset forms part of the pointer set of image.RGBA.
+(*crypto/cipher.StreamReader).Read is attached to the pointer receiver only.
+(*net.Listener).Accept doesn鈥檛 exist; methods are on the concrete listeners instead鈥攄emonstrating an absent membership.
+(*bufio.Scanner).Err is included in the pointer method set.
+time.Duration.String belongs to the value method set even though the type is an int64 alias.
+(*http.Client).Do is available on the pointer receiver of http.Client.
+(*go/ast.File).End occupies the pointer set of ast.File.
+"(*bytes.Buffer).Grow is confined to the pointer set, enforcing heap addressability when needed."
+A bidirectional chan int can be used as a send-only chan<- int.
+"Likewise, chan string narrows to a receive-only <-chan string for consumers."
+The parameter work chan<- Task expects a send-only channel derived from any full channel.
+You may assign a <-chan error to an interface that requires just reading.
+"Function fanIn accepts <-chan int and returns <-chan int, keeping the read-only property."
+"Inside select, a <-chan time.Time behaves like its parent ticker channel."
+Passing make(chan bool) to process(chan<- bool) implicitly converts to send-only.
+"The compiler permits var r <-chan byte = bidir, demonstrating safe covariance."
+"Attempting to send on a <-chan int is illegal, marking its restricted direction."
+"A chan<- struct{} cannot be read from, enforcing unidirectional semantics."
+Wrapper type type In <-chan string reflects receive-only intent.
+Library call ctx.Done() returns a read-only <-chan struct{}.
+Generic fan-out func Fan[T any](<-chan T) []<-chan T depends on directional channels.
+The sync.Pool purge ticker uses a send-only chan<- struct{} internally.
+"Upgrading a <-chan int back to chan int is disallowed, capturing invariance."
+A nil channel literal typed as chan<- int matches any send-only position.
+Documentation for time.After states it delivers a <-chan time.Time.
+"Reading from a closed send-only channel is impossible, highlighting the direction constraint."
+"When you close a bidirectional channel, it is treated as both send and receive capable until closed."
+"Reflection via reflect.ChanDir reveals whether a channel value is send-only, recv-only, or both."
+sync.WaitGroup.Done signals sync.WaitGroup.Wait through an internal counter.
+The <-chan struct{} returned by context.Context.Done notifies listeners of cancellation.
+(*time.Ticker).C streams ticks to any goroutine that selects on it.
+net/http.Server.Shutdown coordinates with in-flight handlers via the context鈥檚 done channel.
+"A producer goroutine feeds jobs into work chan<- Job, while workers pull from <-chan Job."
+Closing the channel quit unblocks <-quit in another goroutine.
+"runtime.Goexit lets a goroutine terminate without closing its channels, illustrating unilateral shutdown."
+The pattern for v := range ch listens to the sending goroutine until ch is closed.
+"errc := make(chan error, 1) conveys a single failure from worker to coordinator."
+"You could have a designated producer goroutine that would generate the jobs (things to do / calculate), and send them on a jobs channel"
+"If you go with a results channel, you also need a goroutine that receives values from it, preventing consumers to get blocked (would occur if buffer of results would get filled)."
+"string, numbers etc.), you may use interface{} for the value type, in which case your map would be of type map[string]interface{}."
+This is very similar to a question I just answered: https://stackoverflow.com/a/12990540/727643
+"When done (no more jobs), the jobs channel is closed which signals consumers that no more jobs will arrive."
+The goroutine has to support some kind of termination signalling (most often a channel)
+"Also note that it is profitable to just send pointers (*Job) on the channels instead of Job values so no need to make ""countless"" copies of Jobs, and also the size of the Job struct value becomes irrelevant."
+This is because the types they are slices of have different memory layouts
+A Model is an interface value which means that in memory it is two words in size
+"For example, this function retrieves the CPU model name using piped commands:"
+"Concept of unaddressable values, which are the opposite of addressable values"
+Code simplifies significantly if we don't use a results channel but the consumer goroutines handle the result right away (print it in our case)
+"One word for the type information, the other for the data"
+Calling value receiver methods through interfaces always creates extra copies of your values.
+"Since this conversion is an O(n) operation and would result in a new slice being created, Go refuses to do it implicitly"
+"If some of the methods of the type must have pointer receivers, the rest should too, so the method set is consistent regardless of how the type is used"
+Can someone tell me a case where a value receiver clearly makes more sense then a pointer receiver?
+"github.com), so other packages (inside other modules) can simply refer to it by importing it like:"
+The easiest and working out-of-the-box solution is to put your database package / module into a VCS (e.g
+"In this example, the Insert and Delete methods are modifying the slice by appending and removing elements.
+As a result, a pointer receiver is used to ensure the modifications are visible outside the method."
+At this point the Go value in f would be a map whose keys are strings and whose values are themselves stored as empty interface values:
+The select statement mediates between multiple channel endpoints concurrently.
+signal.Notify forwards OS signals into a <-chan os.Signal for async handling.
+Pipeline stage 2 receives from in <-chan Frame and transmits to out chan<- Frame.
+context.WithTimeout creates a done channel that fires after the deadline.
+sync.Pool鈥檚 cleanup goroutine drains a ticker channel to know when to purge.
+"When http2Server detects a GOAWAY, it sends the event onto a dedicated control channel."
+Logger workers receive logEntry structs via a buffered queue channel for batching.
+Closing time.AfterFunc鈥檚 internal timer channel awakens the scheduler goroutine.
+go test collects results by reading from a testing/internal/testdeps.Event channel.
+The fan-in pattern merges multiple <-chan int into one output channel.
+A context tree propagates cancellation by closing each child鈥檚 done channel recursively.
+encoding/json.Marshal relies on any value implementing json.Marshaler for custom output.
+io.Copy depends on both io.Reader and io.Writer to shuttle bytes.
+http.NewRequestWithContext requires a live context.Context to propagate cancellation.
+The method (*sql.DB).QueryContext uses context.Context to enforce query deadlines.
+time.Parse leans on time.Location when interpreting zone information.
+regexp.Compile needs syntax.Parse internally to transform patterns.
+gzip.NewWriter wraps an underlying io.Writer to emit compressed data.
+flag.Parse initializes the default flag.CommandLine variable before parsing args.
+Function httptest.NewServer spawns a *http.Server behind the scenes.
+crypto/tls.Client builds on crypto/x509.CertPool to verify peer certificates.
+template.Execute pulls in data via an arbitrary interface{} value.
+net.DialTimeout delegates DNS resolution to net.Resolver.
+go/ast.Inspect walks the tree using a user-supplied callback function.
+sync.Map.LoadOrStore depends on reflect.DeepEqual when keys are interfaces not comparable.
+os.RemoveAll recursively calls os.Remove on each child path.
+context.WithValue stores key鈥搗alue pairs in an internal map structure.
+runtime.Gosched cooperates with the scheduler to yield CPU time.
+The wrapper ioutil.ReadAll defers to io.Reader until EOF.
+bytes.Equal makes use of memeq assembly for speed.
+path/filepath.Glob parses patterns through filepath.Match.
+strconv.Atoi turns a string into an int.
+strconv.FormatInt converts an int64 to its textual form.
+Casting someString to []byte yields a zero-copy byte slice.
+The built-in append coerces a []byte into a variadic ...byte list.
+"Using Copy(buf, str) implicitly converts string to []byte."
+"int(myFloat) drops the fractional part, showcasing numeric conversion."
+reflect.Value.Bytes returns a []byte representation of the underlying data.
+bytes.NewBufferString wraps a string as a *bytes.Buffer.
+A chan int cannot be reinterpreted as chan string; the compiler forbids it.
+"The JSON number ""3.14"" decodes into float64 by default."
+"time.Unix(sec, nsec) maps integers to a time.Time value."
+The function binary.BigEndian.PutUint32 encodes uint32 into a []byte slice.
+Sprintf with %d casts a numeric value to text.
+unsafe.Pointer(&slice[0]) reinterprets the slice element as raw memory.
+url.QueryEscape changes arbitrary text into URL-encoded form.
+bytes.Split breaks a []byte into a [][]byte.
+The statement var _ io.Reader = &buf asserts interface conversion at compile time.
+time.Duration(d).Seconds() expresses the duration in float64 seconds.
+json.Unmarshal can populate a map[string]interface{} from raw JSON text.
+"Using copy(b, s) copies bytes from string to []byte, allocating as needed."
+io.Copy and bytes.Buffer work together to duplicate data.
+http.ServeMux teams up with any http.Handler to route requests.
+template.Execute partners with bytes.Buffer to render output.
+sync.WaitGroup coordinates with multiple goroutines calling Done.
+context.WithTimeout pairs a context and time.AfterFunc to enforce deadlines.
+bufio.Scanner cooperates with io.Reader to tokenize input.
+image/draw.Draw joins forces with image.RGBA for painting pixels.
+sql.Rows.Next iterates over columns provided by database/sql.
+gzip.Writer compresses bytes produced by io.Reader.
+csv.Reader parses records and hands them to user code for processing.
+grpc.Server invokes handlers implementing generated service interfaces.
+testing.T.Run invites sub-tests to execute in isolation.
+reflect.DeepEqual examines complex structs defined by the user.
+log/slog.Logger streams entries into a custom slog.Handler.
+hash/crc32.Update mixes new data into an existing checksum.
+net/http/httptest.ResponseRecorder interacts with http.Handler to capture output.
+crypto/tls.Handshake negotiates with net.Conn to secure the transport.
+embed.FS serves static files through http.FileServer.
+os/exec.Command communicates with the kernel via syscall.SysProcAttr.
+plugin.Open calls into functions exported from a shared object file.
+Package fmt contains the function fmt.Printf.
+net/http houses the type http.Client.
+The struct bytes.Buffer includes method (*bytes.Buffer).Grow.
+"Inside sync, you鈥檒l find the constant sync.ErrCondWait."
+archive/zip.Writer encloses state fields like fileHeader.
+Module golang.org/x/net bundles sub-packages such as html and context.
+testing.T holds helper methods Helper and Cleanup.
+sql.DB struct stores a connection pool slice internally.
+"Package math declares Pi, an exported constant."
+crypto/tls offers the function tls.LoadX509KeyPair.
+A time.Location value keeps a name and zone table.
+flag.FlagSet collects multiple flag.Flag instances.
+"In image, the sub-package color defines color.RGBA."
+Struct os.FileInfoHeader contains a nested tar.Header.
+context exports type context.Context.
+sync.Map stores a bucket array under the hood.
+go/ast.File aggregates slices of ast.Decl and ast.Comments.
+The package-level variable http.DefaultTransport resides in net/http.
+crypto/x509.Certificate retains parsed extensions in a slice.
+time.Ticker contains a channel C for ticks.
+A chan<- int restricts operations to send-only.
+"Generic function maps.Clone[K comparable, V any] constrains K to be comparable."
+Unexported field names limit access to within the defining package.
+Calling (*sync.Once).Do prevents the function from running more than once.
+context.WithCancel imposes a cancellation signal on child operations.
+The zero value of sync.Mutex forbids copying after first use.
+JSON tags like omitempty govern how encoding/json marshals empty fields.
+A closed channel bars any further sends.
+time.Sleep forces the goroutine to pause for at least the duration.
+The build tag //go:build windows limits compilation to Windows targets.
+testing.Short() flag curtails long-running tests when set.
+A value method with a pointer receiver locks out direct calls on a copied struct.
+flag.Parse forbids further flag definition after execution.
+"The Read side of io.Pipe blocks until data is available, enforcing back-pressure."
+sync.Cond.Wait demands the associated Locker be held before calling.
+url.QueryEscape constrains output to RFC 3986 safe characters.
+unsafe.Add requires that the pointer come from the same allocated object.
+"A constant declaration must not depend on runtime values, restricting usage."
+The compiler prevents embedding of pointers in sync.Pool items after Go 1.20.
+rsa.GenerateKey insists on at least 2048-bit modulus for security.
+A []byte slice differs from a string by being mutable.
+chan int is not the same as <-chan int; the latter disallows sends.
+bytes.Equal operates differently from strings.EqualFold regarding case sensitivity.
+sync.Map behaves differently from the built-in map when accessed concurrently.
+time.After contrasts with time.NewTimer in that it returns a one-shot channel.
+fmt.Sprint varies from fmt.Sprintf by not taking a format string.
+"json.Marshal produces output unlike encoding/gob.Encode, which is binary."
+path/filepath.Join treats slashes differently from path.Join on Windows.
+os.RemoveAll diverges from os.Remove by deleting recursively.
+sync.RWMutex.RLock differs from sync.Mutex.Lock in allowing shared access.
+Pointer receiver (*T).Method is not identical to value receiver method for call semantics.
+context.Background contrasts with context.TODO by intent annotation.
+unsafe.Pointer behaves differently than uintptr regarding GC reachability.
+"bytes.Buffer.Reset clears capacity, whereas Truncate(0) may keep it."
+go vet checks for issues that go fmt completely ignores.
+http.Get varies from http.Client.Get in time-out behavior.
+"reflect.Value.Interface panics, unlike reflect.Value.String, which never does."
+"sync.Cond.Signal awakens only one waiter, whereas Broadcast wakes all."
+map[K]V zero value is nil; this differs from most other container types.
+filepath.Clean handles .. segments differently than url.PathEscape.
+strings.Builder supersedes repeated += string concatenation.
+http.NewRequestWithContext replaces the older http.NewRequest.
+context.WithTimeout has taken over from manual time.After select patterns.
+errors.Is stands in for direct equality checks on wrapped errors.
+os.ReadFile modernizes the classic ioutil.ReadFile.
+os.WriteFile substitutes for ioutil.WriteFile.
+io.NopCloser fills the gap left by the deprecated ioutil.NopCloser.
+testing.T.Setenv renders obsolete os.Setenv in test setups.
+cmp.Equal from github.com/google/go-cmp replaces deep reflection checks in tests.
+sync.OnceFunc usurps verbose sync.Once wrappers.
+context.WithValue updates thread-local storage patterns from pre-Go designs.
+log/slog supplants the legacy log package for structured logging.
+tzdata module takes the place of platform-specific zoneinfo files.
+atomic.Pointer[T] steps in for unsafe pointer swapping in Go 1.19+.
+sql.Rows.Err replaces checking the error return of Next in older code.
+io.ReadAll rebrands the deprecated ioutil.ReadAll.
+netip.Addr is intended to replace net.IP for value semantics.
+"os.Stat with errors.Is(err, fs.ErrNotExist) supersedes os.IsNotExist helpers."
+sync/atomic鈥檚 Int64 type obsoletes manual LoadInt64/StoreInt64 pairs.
+context.Context replaces custom 鈥渃ancel channel鈥?designs in older Goroutines code.
+"fmt.Print is functionally equivalent to fmt.Fprint(os.Stdout, 鈥?."
+"errors.New(""x"") achieves the same as fmt.Errorf(""x"") without formatting verbs."
+"time.AfterFunc(d, f) mirrors the effect of go func(){<-time.After(d); f()}()."
+"bytes.Equal(a, b) works like reflect.DeepEqual(a, b) for byte slices."
+http.ServeTLS parallels Server.ServeTLS with a default server instance.
+"math.Min(x, y) does the same job as if x < y { x } else { y }."
+ioutil.NopCloser(r) is interchangeable with io.NopCloser(r) after Go 1.16.
+The alias type Rune = int32 denotes the same type as int32.
+context.Background() is equivalent to a zero context.Context value returned by the runtime.
+Calling (*json.Encoder).Encode(v) matches json.NewEncoder(w).Encode(v) for a fresh encoder.
+"strings.TrimSpace(s) equals strings.Trim(s, "" \t\r\n"")."
+"make([]T, 0) is effectively the same as var slice []T."
+time.Duration constants defined with iota correspond to their literal nanosecond values.
+"http.ListenAndServe("":80"", h) amounts to creating a Server and running Serve."
+"A map lookup v, ok := m[k] is the same as calling m[k] followed by ok."
+log.Fatal(err) combines log.Print(err) and os.Exit(1).
+bytes.NewReader(b) is equivalent to strings.NewReader(string(b)) when bytes hold UTF-8 text.
+sync.WaitGroup.Add(-1) matches a call to Done().
+"copy(buf, src) where len(buf) >= len(src) is identical to copy(buf[:len(src)], src)."
+Using a zero net.Dialer{} achieves the same default behavior as net.DialTimeout with default settings.
+"The 2nd value is an interface value, a (value;type) pair holding a nil pointer value and a *display concrete type"
+Interface types in Go hold the actual value and its dynamic type
+Converting a string to an interface{} is done in O(1) time
+Two interface values are equal if they have identical dynamic types and equal dynamic values or if both have value nil.
+You can see an example of this on the Go Playground.
+"So if you compare it to nil, it will be false"
+But note that you can use reflection to tell if a non-nil interface value wraps a nil value using Value.IsNil()
+"I'd imitate that; it avoids aliasing, returning a new slice helps call attention to the fact that a new array might be allocated, and it's familiar to callers."
+Program execution begins by initializing the main package and then invoking the function main
+"According to your edits/comments: if you want the 2 running SayHello() functions to print ""mixed"" numbers randomly: you have no guarantee to observe such behaviour"
+"Similarly, you don't need a pointer to modify a map or communicate on a channel."
+Converting a []string to an interface{} is also done in O(1) time since a slice is still one value
+But any type also includes concrete types where nil is a valid value (e.g
+"Finally, on whether your slices should be of pointers: slices of values can be useful, and save you allocations and cache misses"
+"Some people say that Go's interfaces are dynamically typed, but that is misleading"
+in case of json it means not to marshal or unmarshal that field).
+"If you compare it to an interface value representing the pair (nil;*display), it will be true:"
+These methods return a value of StructField which describes / represents a struct field; and StructField.Tag is a value of type StructTag which describes / represents a tag value.
+"An interface is just a method set, any type implements it if the same methods are part of the method set of the type"
+"Usually it is used to provide transformation info on how a struct field is encoded to or decoded from another format (or stored/retrieved from a database), but you can use it to store whatever meta-info you want to, either intended for another package or for your own use."
+This exported type would then need methods to implement the json.Marshaler and json.Unmarshaler interfaces.
+"For slices, you don't need to pass a pointer to change elements of the array"
+You have to tell your main() function to wait for the SayHello() function started as a goroutine to complete
+And second you have to first start SayHello() as a goroutine because your current code first executes SayHello() in the main goroutine and only once it finished starts the other one:
+A package can only view the unexported fields of types within its own package
+The runtime needs to know the dynamic or runtime-type of the value stored in a variable of interface type.
+"Code review guidelines suggest passing small structs like type Point struct { latitude, longitude float64 }, and maybe even things a bit bigger, as values, unless the function you're calling needs to be able to modify them in place."
+However there might be situations where you know the code will not fail in any circumstances
+"And if one of them is an error, it's there for a reason (which is the function might fail) and you should not bypass it because if you do, your subsequent code might also fail miserably (e.g"
+"This is available in github.com/icza/gog, as gog.Must() (disclosure: I'm the author)."
+"Go 1.18 generics update: Go 1.18 adds generics support, it is now possible to write a generic Must() function:"
+"You mention accepting a pointer to avoid allocations by allowing reuse; changing APIs for the sake of memory reuse is an optimization I'd delay until it's clear the allocations have a nontrivial cost, and then I'd look for a way that doesn't force the trickier API on all users:"
+More details about this: The Laws of Reflection #The representation of an interface.
+"Broadly, value slices can make sense if either you get all of your items in place up front and don't move them (e.g., no more appends after initial setup), or if you do keep moving them around but you're confident that's OK (no/careful use of pointers to items, and items are small or you've measured the perf impact)"
+It implements it if its method set is a superset of the interface
+The method set of non-pointer types only includes methods with non-pointer receiver.
+"This compile-time error arises when you try to assign or pass (or convert) a concrete type to an interface type; and the type itself does not implement the interface, only a pointer to the type."
+This seems unfeasible as you'd have to know the actual type the interface holds
+"For Go modules to work (with Go 1.11 or newer), you'll also need to set the GOPRIVATE variable, to avoid using the public servers to fetch the code:"
+Any value that is stored in an interface value Stringer must have this method
+"There are types which cannot be nil, for example a struct or a custom type with int as its underlying type"
+In these cases you would not need to be able to store a nil value of that specific type.
+But everything is ok if we try to assign a value of type *MyType to Stringer:
+In case of a multi-value return function you can't refer to fields or methods of a specific value of the result when calling the function.
+The most common example is the built-in error type which is an interface with one method
+And we get the expected outcome (try it on the Go Playground):
+But besides the nil inside the interface we must store its dynamic type as the nil value does not carry such information
+"They are statically typed: a variable of interface type always has the same static type, and even though at run time the value stored in the interface variable may change type, that value will always satisfy the interface."
+"So in other words: if we embed a non-pointer type, the method set of the non-pointer embedder only gets the methods with non-pointer receivers (from the embedded type)."
+"The value inside the pair will be nil, not the interface value itself"
+"If we use a pointer value to the embedder, regardless of whether the embedded type is pointer or not, the method set of the pointer to the embedder always gets methods with both the pointer and non-pointer receivers (from the embedded type)."
+"In this case the assertion will not hold for the reasons described above, but we get a slightly different runtime-error:"
+"Whenever there is no error, you explicitly set or return the value nil and not the value of some concrete (non-interface) type error variable (which would be really bad practice, see demonstration below)."
+"So when you put a *display type into the shower slice, an interface value will be created, which is a pair of (value;type) where value is nil and type is *display"
+"But you should not use this in all cases, just when you're sure it succeeds"
+"If you would put a nil value into the slice, then the interface value itself would be nil and a condition x == nil would be true."
+"In case 2 a nil pointer is returned but first it is converted to an interface type (error) so an interface value is created which holds a nil value and the type *MyErr, so the interface value is not nil."
+"The interface{} type (or any with Go 1.18+), the empty interface is the interface that has no methods."
+Interfaces unlike other concrete types (non-interfaces) can hold values of different concrete types (different static types)
+v is not of any type; it is of interface{} type.
+"When passing a value into the DoSomething function, the Go runtime will perform a type conversion (if necessary), and convert the value to an interface{} value.
+All values have exactly one type at runtime, and v's one static type is interface{} (or any with Go 1.18+)."
+Addendum: This is were Russ's article is quite complete regarding an interface structure:
+"IF you can be certain Get() will not produce error for certain input values, you can create a helper Must() function which would not return the error but raise a runtime panic if it still occurs:"
+"The alternate option would be to use nil as the interface value itself when the value to be stored in it is nil, but this solution is insufficient as it would lose the dynamic type information."
+Interface values are represented as a two-word pair giving a pointer to information about the type stored in the interface and a pointer to the associated data.
+Assigning b to an interface value of type Stringer sets both words of the interface value.
+"slices, maps, channels, all pointer types), so in order to store the value at runtime that satisfies the interface it is reasonable to support storing nil inside the interface"
+Issue 33232 seems to point out to any as an alias to interface{} in Go 1.18 (Q1 2022)
+"'any' being only for constraints is an unexpected cut-out that reduces generality and orthogonality of concepts.
+It's easy to say ""let's just wait and see"", but prescribing uses tends to create much more jagged features than full generality"
+"You can even simplify it further if you incorporate the Get() call into your helper function, let's call it MustGet:"
+"'any' being only for constraints is a detail that will be in every writeup of generics - books, blog posts, and so on.
+If we think we are likely to allow it eventually, it makes sense to allow it from the start and avoid invalidating all that written material."
+"In general if you want to indicate nil for a value of interface type, use explicit nil value and then you can test for nil equality"
+"For this reason the template package provides the Must(t *Template, err error) *Template function and the regexp package provides the MustCompile(str string) *Regexp function: they don't return errors because their intended use is where the input is guaranteed to be valid."
+"This means the String() method is in the method set of the *MyType type, but not in that of MyType."
+"In these cases you can provide a helper function (or method) which will discard the error (or raise a runtime panic if it still occurs).
+This can be the case if you provide the input values for a function from code, and you know they work.
+Great examples of this are the template and regexp packages: if you provide a valid template or regexp at compile time, you can be sure they can always be parsed without errors at runtime"
+"Attempting to convert instead of type assert, we get the compile-time error we're talking about:"
+"To see what's in a slice header, check out the reflect.SliceHeader type:"
+"There is a very similar case, namely when you have an interface value which wraps a value of MyType, and you try to type assert another interface value from it, Stringer"
+"Note: Go 1.18 (Q1 2022) does rename interface{} to any (alias for interface{}).
+See issue 49884, CL 368254 and commit 2580d0e.
+See the last part of this answer."
+"When using structs and embedding, often it's not ""you"" that implement an interface (provide a method implementation), but a type you embed in your struct"
+"We can also make it work, if we embed *MyType and using only a non-pointer MyType2 (try it on the Go Playground):"
+"Since there is no implements keyword, all types implement at least zero methods, and satisfying an interface is done automatically, therefore all types satisfy the empty interface.
+That means that if you write a function that takes an interface{} value as a parameter, you can supply that function with any value."
+"The _ used as a name of the variable tells the compiler to effectively discard the RHS value, but to type-check it and evaluate it if it has any side effects, but the anonymous variable per se doesn't take any process space."
+It is a handy construct when developing and the method set of an interface and/or the methods implemented by a type are frequently changed
+"Note: Helper functions to acquire a pointer to a non-zero value are available in my github.com/icza/gox library, in the gox package, so you don't have to add these to all your projects where you need it."
+"Also, whatever we embed (either MyType or *MyType), if we use a pointer *MyType2, it will always work (try it on the Go Playground):"
+That signal channel is used to push a value into when you want the goroutine to stop
+"Your solution is not a worker goroutine pool in any sense: your code does not limit concurrent goroutines, and it does not ""reuse"" goroutines (it always starts a new one when a new job is received)."
+It provides a static (compile time) check that boolType satisfies the ValueConverter interface
+"If 'any' is allowed in generics but not non-generic code, then it might encourage people to overuse generics simply because 'any' is nicer to write than 'interface{}', when the decision about generics or not should really be made by considering other factors."
+"5 of them) which would loop over the channel on which jobs are delivered, and each would execute / complete the received jobs."
+"The producer goroutine could simply close the jobs channel when all jobs were generated and sent, properly signalling consumers that no more jobs will be coming"
+Also note that in the background the following will happen (this is also a valid syntax):
+"The second word in the interface value points at the actual data, in this case a copy of b.
+The assignment var s Stringer = b makes a copy of b rather than point at b for the same reason that var c uint64 = b makes a copy: if b later changes, s and c are supposed to have the original value, not the new one.
+Values stored in interfaces might be arbitrarily large, but only one word is dedicated to holding the value in the interface structure, so the assignment allocates a chunk of memory on the heap and records the pointer in the one-word slot."
+"Again, compile-time error, because the method set of MyType2 does not contain the String() method of the embedded MyType, only the method set of *MyType2, so the following works (try it on the Go Playground):"
+"It's not a special design, but a logical consequence of Go's type declaration syntax."
+Note that this model to have a designated producer goroutine is not mandatory
+"You could have multiple goroutines to produce jobs too, but then you must synchronize them too to only close the jobs channel when all producer goroutines are done producing jobs - else attempting to send another job on the jobs channel when it has already been closed results in a runtime panic"
+It effectively prevents to go install a broken (intermediate) version with such omission.
+"So, range uses a[i] as its second value for arrays/slices, which effectively means that the
+value is copied, making the original value untouchable."
+"Usually producing jobs are cheap and can be produced at a much quicker rate than they can be executed, so this model to produce them in 1 goroutine while many are consuming / executing them is good in practice."
+"If jobs have results, you may choose to have a designated result channel on which results could be delivered (""sent back""), or you may choose to handle the results in the consumer when the job is completed / finished"
+"The first word in the interface value points at what I call an interface table or itable (pronounced i-table; in the runtime sources, the C implementation name is Itab).
+The itable begins with some metadata about the types involved and then becomes a list of function pointers.
+Note that the itable corresponds to the interface type, not the dynamic type.
+In terms of our example, the itable for Stringer holding type Binary lists the methods used to satisfy Stringer, which is just String: Binary's other methods (Get) make no appearance in the itable."
+"The Go compiler performs escape analysis, and allocates local variables on the heap (instead of the stack) if they may escape the function"
+"So when you pass a slice to a function, a copy will be made from this header, including the pointer, which will point to the same backing array"
+"Modifying the elements of the slice implies modifying the elements of the backing array, and so all slices which share the same backing array will ""observe"" the change."
+"Also regarding slices and maps, see Map initialization in Go and why slice values can sometimes go stale but never map values?"
+The code prints you completely different memory locations for the value from range and the actual
+"If the function adds new elements to the slice, that requires changing the slice header (the length at a minimum, but may also involve allocating a new backing array), which the caller will not see (not without returning the new slice header)."
+"So the only thing you can do is to either use pointers or the index, as already proposed by jnml and peterSO."
+"The statement is suggesting that if you have a method that reslices or reallocates the slice, then you should use a pointer receiver."
+"It also has the advantage that it can be ""throttled"" with the proper selection of the channel capacity (buffered channel) and the number of consumer goroutines."
+"Interface values are fundamentally pointers, while your value receiver methods require values; ergo every call requires Go to create a new copy of the value, call your method with it, and then throw the value away.
+There is no way to avoid this as long as you use value receiver methods and call them through interface values; it's a fundamental requirement of Go."
+"But this does not implement the Stringer interface, unless the caller of your API also uses pointer to your type, which might be a usability problem of your API."
+Note: irbull points out in the comments a warning about interface methods:
+The construct serves as a guard against forgetting to match the method sets of a type and of an interface where the intent is to have them compatible
+"This would result in a clean design, would result in fixed (but arbitrary) number of goroutines, and it would always utilize 100% CPU (if # of goroutines is greater than # of CPU cores)"
+"range construct on a channel handles the ""close"" event and terminates properly"
+"Hashable/serializable are all nice to have, but I'm just not sure if they are indeed that compelling to have"

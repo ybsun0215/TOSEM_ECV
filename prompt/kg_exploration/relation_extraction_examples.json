@@ -1,0 +1,22 @@
+[
+  {
+    "text": "If you need to read and write the date and time to a database, use the java.sql.Date and java.sql.Timestamp classes.",
+    "entity_pairs": "(java.sql.Date, java.sql.Timestamp)",
+    "output": "### relation triples ###\n(java.sql.Date, works with, java.sql.Timestamp)"
+  },
+  {
+    "text": "There are several overridden versions of both update and doFinal which takes different parameters.",
+    "entity_pairs": "(update, doFinal)",
+    "output": "### relation triples ###\n(update, is different from, doFinal)"
+  },
+  {
+    "text": "A thread that calls wait() on any object becomes inactive until another thread calls notify() on that object.",
+    "entity_pairs": "(wait(), notify())",
+    "output": "### relation triples ###\n(wait(), call order,notify())"
+  },
+  {
+    "text": "Once the read operation has completed the data read into the ByteBuffer and then into a String and printed to System.out.",
+    "entity_pairs": "(ByteBuffer, String); (String, System.out); (ByteBuffer, System.out)",
+    "output": "### relation triples ###\n(ByteBuffer, read into, String); (String, print to, System.out)"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "text": "Use Pattern.quote(\".\") to escape a period for splitting, and String.contains() to check if a string contains characters.",
+    "entities": "Pattern.quote(), String.contains()",
+    "output": "### entity types ###\nPattern.quote(): static method; String.contains(): instance method"
+  },
+  {
+    "text": "ArrayList efficiently manages its internal data structure via Arrays.",
+    "entities": "ArrayList, Arrays",
+    "output": "### entity types ###\nArrayList: concrete class; Arrays: utility class"
+  },
+  {
+    "text": "Collections.sort() relies on Arrays.asList() to sort array elements when more complex sorting is needed.",
+    "entities": "Collections.sort(), Arrays.asList()",
+    "output": "### entity types ###\nCollections.sort(): static method; Arrays.asList():static method"
+  },
+  {
+    "text": "http.ServeMux teams up with any http.Handler to route requests.",
+    "entities": "http.ServeMux, http.Handler",
+    "output": "### entity types ###\nhttp.ServeMux: struct type; http.Handler: interface type"
+  }
+]

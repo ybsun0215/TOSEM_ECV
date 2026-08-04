@@ -1,0 +1,18 @@
+[
+  {
+    "entity_types": "concrete class, abstract class, utility class, abstract method, concrete method, instance method, static method",
+    "output": "### new entity types and subtypes ###\nclass: [concrete class, abstract class, utility class]\nmethod: [abstract method, concrete method, instance method, static method]\n\n### new entity type definitions ###\nclass: A class defines the structure and behavior of objects, including fields, methods, and constructors, serving as a template for object instantiation.\nmethod: A method is a block of code that performs a specific task, defined within a class or interface, and can be invoked on objects or directly via the class (if static)."
+  },
+  {
+    "entity_types": "concrete class, abstract class, utility class, functional interface, annotation interface",
+    "output": "### new entity types and subtypes ###\nclass: [concrete class, abstract class, utility class]\ninterface: [functional interface, annotation interface]\n\n### new entity type definitions ###\nclass: A class defines the structure and behavior of objects, including fields, methods, and constructors, serving as a template for object instantiation.\ninterface: An interface defines a contract of methods that a class must implement. It can be functional or annotation-based."
+  },
+  {
+    "entity_types": "concrete class, abstract class, utility class, abstract method, concrete method, instance method, static method, functional interface, annotation interface",
+    "output": "### new entity types and subtypes ###\nclass: [concrete class, abstract class, utility class]\nmethod: [abstract method, concrete method, instance method, static method]\ninterface: [functional interface, annotation interface]\n\n### new entity type definitions ###\nclass: A class defines the structure and behavior of objects, including fields, methods, and constructors, serving as a template for object instantiation.\nmethod: A method is a block of code that performs a specific task, defined within a class or interface, and can be invoked on objects or directly via the class (if static).\ninterface: An interface defines a contract of methods that a class must implement. It can be functional or annotation-based."
+  },
+  {
+    "entity_types": "exception class, concrete class, static nested class, abstract class, utility class, interface method, concrete class method, abstract method, concrete method, instance method, static method, functional interface, annotation interface, package",
+    "output": "### new entity types and subtypes ###\nclass: [exception class, concrete class, static nested class, abstract class, utility class]\nmethod: [interface method, concrete class method, abstract method, concrete method, instance method, static method]\ninterface: [functional interface, annotation interface]\npackage: []\n\n### new entity type definitions ###\nclass: A class defines the structure and behavior of objects, including fields, methods, and constructors, serving as a template for object instantiation.\nmethod: A method is a block of code that performs a specific task, defined within a class or interface, and can be invoked on objects or directly via the class (if static).\ninterface: An interface defines a contract of methods that a class must implement. It can be functional or annotation-based.\npackage: A package is a namespace that groups related classes and interfaces for better organization."
+  }
+]
