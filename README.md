@@ -32,9 +32,9 @@ Explore-Construct-Verify/
 │   ├── kg_exploration/          # Prompts and few-shot examples for Stage 1
 │   └── kg_construction/         # Prompts and few-shot examples for Stage 2
 ├── seed_data/
-│   └── seed.csv                 # Seed documents used for schema exploration
+│   └── xx.csv                 # Seed documents used for schema exploration
 ├── all_data/
-│   └── parsed.csv               # Full document corpus for KG construction
+│   └── xx.csv               # Full document corpus for KG construction
 ├── output/
 │   ├── kg_exploration/          # Outputs of Stage 1 (entity/relation types)
 │   ├── kg_construction/         # Outputs of Stage 2 (extracted triples)
