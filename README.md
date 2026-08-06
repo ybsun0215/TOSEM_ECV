@@ -230,16 +230,6 @@ kg_filtering(universal_config)
 
 ---
 
-## Datasets and Evaluation Data
-
-The datasets used in the paper (Java, Kotlin, Go) and evaluation ground truth are available in this repository and as a permanent archive:
-
-- **Seed data:** `seed_data/seed.csv`
-- **Full corpus:** `all_data/parsed.csv`
-- **API recommendation ground truth:** `support4apirecom/Ground_truth.csv`
-
----
-
 ## Exported KG Format
 
 The verified KG is output as a CSV file (`output/kg_filtering/refine_kg.csv`) with the following columns:
