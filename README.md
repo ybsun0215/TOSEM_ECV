@@ -81,7 +81,7 @@ Relation types are also discovered automatically. Common relation types found ac
 |---------------|-----------|---------|
 | `Equivalence` | Two API entities have the same or nearly identical functionality | `(remove, like, removeAt)` |
 | `Difference` | Two entities differ in behavior or thread-safety | `(Vector, synchronized_version_of, ArrayList)` |
-| `Performance` | Two entities differ in computational performance | `(LinkedList, slower_than, ArrayList)` |
+| `Preference` | Two entities differ in computational performance | `(LinkedList, slower_than, ArrayList)` |
 | `Dependency` | One entity requires or uses another | `(Iterator, used_by, Collection)` |
 
 > The full set of discovered relation types and definitions is saved to `output/kg_exploration/relation_type.csv`. These are dataset-specific and may vary across languages and documentation corpora.
